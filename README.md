@@ -2,23 +2,32 @@
 
 > Collection of most popular coding interview problems and solutions in Java
 
-### Problem 1: Two Sum
+---
 
-Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to
-target.
+### Problem 1: Sort and Merge using multithreading
 
-You may assume that each input would have exactly one solution, and you may not use the same element twice.
+Given an array of N size with random integers. Write a multithreaded program that performs the following operations on
+this array:
 
-You can return the answer in any order.
+Thread 1 sorts the even numbers
 
-Example 1:
+Thread 2 sorts the odd numbers
 
-Input: nums = [2,7,11,15], target = 9
+Thread 3 merge the results with even numbers in the top part of the array
 
-Output: [0,1]
+#### Example:
 
-Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Assume we have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 
-#### Leetcode
+Thread 1 results [0, 2, 8, 32, 94]
 
-[1. Two Sum](https://leetcode.com/problems/two-sum/)
+Thread 2 results [1, 3, 7, 9, 11, 29]
+
+Thread 3 results [0, 2, 8, 32, 94, 1, 3, 7, 9, 11, 29]
+
+#### Follow up
+
+Use `CompletableFutures` to solve the same.
+
+---
+
