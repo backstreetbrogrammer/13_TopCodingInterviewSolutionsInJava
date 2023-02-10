@@ -28,6 +28,12 @@ import java.util.stream.IntStream;
  */
 public class SortEvenAndOddNumbersAndMergeConcurrently {
 
+    private final int[] array;
+
+    public SortEvenAndOddNumbersAndMergeConcurrently(final int[] array) {
+        this.array = array;
+    }
+
     public static void main(final String[] args) throws InterruptedException {
         try (final var s = new Scanner(System.in)) {
             System.out.println("Enter the input array as comma separated.");
@@ -49,22 +55,24 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
                 }
             }
 
+            final var sortAndMerge = new SortEvenAndOddNumbersAndMergeConcurrently(arr);
+
             // create and start the threads
-            multiThreadingTest(arr);
-            multiThreadingTestUsingCompletableFutures(arr);
+            sortAndMerge.multiThreadingTest();
+            sortAndMerge.multiThreadingTestUsingCompletableFutures();
         }
     }
 
-    private static void multiThreadingTestUsingCompletableFutures(final int[] arr) {
-        if (arr == null || arr.length == 0) return;
+    public void multiThreadingTestUsingCompletableFutures() {
+        if (array == null || array.length == 0) return;
 
         final CompletableFuture<int[]> futureThread1
-                = CompletableFuture.supplyAsync(() -> Arrays.stream(arr)
+                = CompletableFuture.supplyAsync(() -> Arrays.stream(array)
                                                             .filter(i -> i % 2 == 0) // evens
                                                             .sorted()
                                                             .toArray())
                                    .thenCombine(CompletableFuture.supplyAsync(
-                                                        () -> Arrays.stream(arr)
+                                                        () -> Arrays.stream(array)
                                                                     .filter(i -> i % 2 != 0) // odds
                                                                     .sorted()
                                                                     .toArray()),
@@ -78,12 +86,12 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
         }
     }
 
-    private static void multiThreadingTest(final int[] arr) throws InterruptedException {
-        if (arr == null || arr.length == 0) return;
+    public void multiThreadingTest() throws InterruptedException {
+        if (array == null || array.length == 0) return;
 
         // create Runnable objects
-        final var sortEvens = new SortOddsOrEvens(arr, false);
-        final var sortOdds = new SortOddsOrEvens(arr, true);
+        final var sortEvens = new SortOddsOrEvens(array, false);
+        final var sortOdds = new SortOddsOrEvens(array, true);
 
         // create Thread objects from above Runnable objects
         final var thread1 = new Thread(sortEvens);
@@ -121,52 +129,7 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
         print(combinedArray);
     }
 
-    private static class SortOddsOrEvens implements Runnable {
-        private final int[] arr;
-        private final boolean isOdd;
-        private int[] sortedArray;
-
-        public SortOddsOrEvens(final int[] arr, final boolean isOdd) {
-            this.arr = arr;
-            this.isOdd = isOdd;
-        }
-
-        @Override
-        public void run() {
-            sortedArray = Arrays.stream(arr)
-                                .filter(isOdd ?
-                                                (i -> i % 2 != 0)    // filter only odd numbers
-                                                : (i -> i % 2 == 0)) // filter only even numbers
-                                .sorted() // sort in ascending order
-                                .toArray(); // convert IntStream to int[]
-        }
-
-        public int[] getSortedArray() {
-            return sortedArray;
-        }
-    }
-
-    private static class MergeArrays implements Runnable {
-        private final int[] evenArr;
-        private final int[] oddArr;
-        private int[] combinedArray;
-
-        public MergeArrays(final int[] evenArr, final int[] oddArr) {
-            this.evenArr = evenArr;
-            this.oddArr = oddArr;
-        }
-
-        @Override
-        public void run() {
-            combinedArray = IntStream.concat(Arrays.stream(evenArr), Arrays.stream(oddArr)).toArray();
-        }
-
-        public int[] getCombinedArray() {
-            return combinedArray;
-        }
-    }
-
-    private static void print(final int[] array) {
+    private void print(final int[] array) {
         for (final int num : array) {
             System.out.printf("%d, ", num);
         }

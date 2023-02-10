@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class AccountTest {
 
-    final Account account1 = new Account(100D);
-    final Account account2 = new Account(200D);
+    private final Account account1 = new Account(100D);
+    private final Account account2 = new Account(200D);
 
     @Test
     @DisplayName("Test method to demonstrate deadlock")
