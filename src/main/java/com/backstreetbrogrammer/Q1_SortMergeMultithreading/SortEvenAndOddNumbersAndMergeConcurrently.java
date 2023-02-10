@@ -6,6 +6,26 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.IntStream;
 
+/**
+ * Given an array of N size with random integers. Write a multithreaded program that performs the following operations on
+ * this array:
+ * <p>
+ * Thread 1 sorts the even numbers
+ * <p>
+ * Thread 2 sorts the odd numbers
+ * <p>
+ * Thread 3 merge the results with even numbers in the top part of the array
+ * <p>
+ * Example:
+ * <p>
+ * Assume we have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
+ * <p>
+ * Thread 1 results [0, 2, 8, 32, 94]
+ * <p>
+ * Thread 2 results [1, 3, 7, 9, 11, 29]
+ * <p>
+ * Thread 3 results [0, 2, 8, 32, 94, 1, 3, 7, 9, 11, 29]
+ */
 public class SortEvenAndOddNumbersAndMergeConcurrently {
 
     public static void main(final String[] args) throws InterruptedException {
