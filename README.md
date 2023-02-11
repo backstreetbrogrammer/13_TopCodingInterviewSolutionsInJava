@@ -27,7 +27,7 @@ this array:
 
 #### Example:
 
-Assume we have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
+We have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 
 - Thread 1 results [0, 2, 8, 32, 94]
 - Thread 2 results [1, 3, 7, 9, 11, 29]
@@ -49,6 +49,11 @@ its users if the rollout is unsuccessful.
 Implement an algorithm that takes as input an array of distinct elements and a size, and returns a subset of the given
 size of the array elements. All subsets should be equally likely.
 
+#### Example:
+
+We have a list of integers: 1 to 10 We need a sublist of sample size of 4 integers. Every run should give different
+sublist of 4 integers as sample with equal likeliness.
+
 ---
 
 ### Problem 3: Deadlock
@@ -61,6 +66,28 @@ Write a program to demonstrate deadlock issue.
 #### Follow up
 
 Modify the program to resolve the deadlock issue.
+
+---
+
+### Problem 4: Stack
+
+A stack is a linear data structure that follows the LIFO - **Last-In, First-Out** principle. That means the objects can
+be inserted or removed only at one end of it, also called a **top**. Last object inserted will be the first object to
+get.
+
+Implement a stack in Java.
+
+#### Follow up 1
+
+Implement a stack in Java using Java collections.
+
+#### Follow up 2
+
+Implement a concurrent stack in Java using locks.
+
+#### Follow up 3
+
+Implement a concurrent stack in Java using CAS (Atomic classes in Java).
 
 ---
 
