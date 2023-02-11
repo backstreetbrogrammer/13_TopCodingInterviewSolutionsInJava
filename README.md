@@ -91,4 +91,13 @@ Implement a concurrent stack in Java using CAS (Atomic classes in Java).
 
 ---
 
+### Problem 5: Print odd and even numbers by 2 threads
+
+Write Java code in which the 2 threads, running concurrently, print the numbers from 1 to 100 **in order**.
+
+- Thread 1 prints odd numbers from 1 to 100
+- Thread 2 prints even numbers from 1 to 100
+
+---
+
 

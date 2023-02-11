@@ -29,12 +29,11 @@ public class MyStackUsingLocks<T> implements StackI<T> {
             while (stack.size() == 0) {
                 stackEmptyCondition.await();
             }
-            final T item = stack.pop();
-            stackFullCondition.signalAll();
-            return item;
+            return stack.pop();
         } catch (final InterruptedException e) {
             e.printStackTrace();
         } finally {
+            stackFullCondition.signalAll();
             lock.unlock();
         }
         return null;
