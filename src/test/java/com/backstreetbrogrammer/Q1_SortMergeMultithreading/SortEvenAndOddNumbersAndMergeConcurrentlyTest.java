@@ -1,25 +1,37 @@
 package com.backstreetbrogrammer.Q1_SortMergeMultithreading;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 public class SortEvenAndOddNumbersAndMergeConcurrentlyTest {
 
-    private final int[] arr = new int[]{2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7};
     private final SortEvenAndOddNumbersAndMergeConcurrently sortAndMerge =
-            new SortEvenAndOddNumbersAndMergeConcurrently(arr);
+            new SortEvenAndOddNumbersAndMergeConcurrently();
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("getInputArrays")
     @DisplayName("Sort and Merge using Thread objects")
-    void sortAndMergeUsingThreads() throws InterruptedException {
+    void sortAndMergeUsingThreads(final int[] arr) throws InterruptedException {
+        sortAndMerge.setArray(arr);
         sortAndMerge.multiThreadingTest();
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("getInputArrays")
     @DisplayName("Sort and Merge using CompletableFutures")
-    void sortAndMergeUsingCompletableFutures() {
+    void sortAndMergeUsingCompletableFutures(final int[] arr) {
+        sortAndMerge.setArray(arr);
         sortAndMerge.multiThreadingTestUsingCompletableFutures();
     }
 
-
+    private static Stream<Arguments> getInputArrays() {
+        return Stream.of(
+                Arguments.of(new int[]{2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7}),
+                Arguments.of(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}),
+                Arguments.of(new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}));
+    }
 }

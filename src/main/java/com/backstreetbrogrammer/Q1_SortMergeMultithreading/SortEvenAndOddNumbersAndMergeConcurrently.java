@@ -28,9 +28,9 @@ import java.util.stream.IntStream;
  */
 public class SortEvenAndOddNumbersAndMergeConcurrently {
 
-    private final int[] array;
+    private int[] array;
 
-    public SortEvenAndOddNumbersAndMergeConcurrently(final int[] array) {
+    public void setArray(final int[] array) {
         this.array = array;
     }
 
@@ -55,34 +55,12 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
                 }
             }
 
-            final var sortAndMerge = new SortEvenAndOddNumbersAndMergeConcurrently(arr);
+            final var sortAndMerge = new SortEvenAndOddNumbersAndMergeConcurrently();
+            sortAndMerge.setArray(arr);
 
             // create and start the threads
             sortAndMerge.multiThreadingTest();
             sortAndMerge.multiThreadingTestUsingCompletableFutures();
-        }
-    }
-
-    public void multiThreadingTestUsingCompletableFutures() {
-        if (array == null || array.length == 0) return;
-
-        final CompletableFuture<int[]> futureThread1
-                = CompletableFuture.supplyAsync(() -> Arrays.stream(array)
-                                                            .filter(i -> i % 2 == 0) // evens
-                                                            .sorted()
-                                                            .toArray())
-                                   .thenCombine(CompletableFuture.supplyAsync(
-                                                        () -> Arrays.stream(array)
-                                                                    .filter(i -> i % 2 != 0) // odds
-                                                                    .sorted()
-                                                                    .toArray()),
-                                                (sortedEvens, sortedOdds) ->
-                                                        IntStream.concat(Arrays.stream(sortedEvens),
-                                                                         Arrays.stream(sortedOdds)).toArray());
-        try {
-            print(futureThread1.get());
-        } catch (final InterruptedException | ExecutionException e) {
-            e.printStackTrace();
         }
     }
 
@@ -127,6 +105,30 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
 
         System.out.println("Sorted Combined array with Evens first and then Odds:");
         print(combinedArray);
+        System.out.println("----------------------------\n");
+    }
+
+    public void multiThreadingTestUsingCompletableFutures() {
+        if (array == null || array.length == 0) return;
+
+        final CompletableFuture<int[]> futureThread1
+                = CompletableFuture.supplyAsync(() -> Arrays.stream(array)
+                                                            .filter(i -> i % 2 == 0) // evens
+                                                            .sorted()
+                                                            .toArray())
+                                   .thenCombine(CompletableFuture.supplyAsync(
+                                                        () -> Arrays.stream(array)
+                                                                    .filter(i -> i % 2 != 0) // odds
+                                                                    .sorted()
+                                                                    .toArray()),
+                                                (sortedEvens, sortedOdds) ->
+                                                        IntStream.concat(Arrays.stream(sortedEvens),
+                                                                         Arrays.stream(sortedOdds)).toArray());
+        try {
+            print(futureThread1.get());
+        } catch (final InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     private void print(final int[] array) {
