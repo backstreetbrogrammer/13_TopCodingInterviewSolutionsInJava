@@ -5,8 +5,20 @@
 ## Table of contents
 
 1. Sort and Merge using multithreading
+    - using Thread / Runnable
+    - using CompletableFutures
 2. Random Sampling
+    - using Collections.shuffle()
+    - using Collections.swap()
 3. Deadlock
+    - demonstrate deadlock issue
+    - resolve deadlock issue
+4. Implement a Stack in Java
+    - without using Java collections
+    - using Java collections
+    - bounded concurrent stack using locks
+    - concurrent stack using CAS (Atomic classes)
+5. Odd Even Printer
 
 ### Youtube
 
@@ -35,7 +47,7 @@ We have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 
 #### Follow up
 
-Use `CompletableFutures` to solve the same.
+Use `CompletableFutures` to solve the same
 
 ---
 
@@ -49,10 +61,16 @@ its users if the rollout is unsuccessful.
 Implement an algorithm that takes as input an array of distinct elements and a size, and returns a subset of the given
 size of the array elements. All subsets should be equally likely.
 
+Hint: Use `Collections.shuffle()` method
+
 #### Example:
 
 We have a list of integers: 1 to 10 We need a sublist of sample size of 4 integers. Every run should give different
 sublist of 4 integers as sample with equal likeliness.
+
+#### Follow up
+
+Use `Collections.swap()` method
 
 ---
 
@@ -83,7 +101,7 @@ Implement a stack in Java using Java collections.
 
 #### Follow up 2
 
-Implement a concurrent stack in Java using locks.
+Implement a bounded concurrent stack in Java using locks.
 
 #### Follow up 3
 
