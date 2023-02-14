@@ -26,6 +26,8 @@
 
 [Top Coding Interview Solutions In Java playlist](https://www.youtube.com/playlist?list=PLQDzPczdXrTiEt7nlXb66dgiAjXhhUAUU)
 
+- [01 - Top Java Coding Problems - Tutorial Series](https://youtu.be/uUdkLShAvkY)
+
 ---
 
 ### Problem 1: Sort and Merge using multithreading
@@ -48,6 +50,10 @@ We have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 #### Follow up
 
 Use `CompletableFutures` to solve the same
+
+#### Youtube
+
+- [02 - Sort and Merge using multithreading](https://youtu.be/oR8qfx3Gops)
 
 ---
 
