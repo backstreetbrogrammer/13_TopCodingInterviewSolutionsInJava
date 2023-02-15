@@ -54,4 +54,9 @@ public class RandomSamplingTest {
         }
     }
 
+    @Test
+    @DisplayName("Test Random online sampling")
+    void testOnlineSampling() {
+        
+    }
 }

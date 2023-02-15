@@ -10,6 +10,7 @@
 2. Random Sampling
     - using Collections.shuffle()
     - using Collections.swap()
+    - online sampling on streaming data
 3. Deadlock
     - demonstrate deadlock issue
     - resolve deadlock issue
@@ -74,9 +75,13 @@ Hint: Use `Collections.shuffle()` method
 We have a list of integers: 1 to 10 We need a sublist of sample size of 4 integers. Every run should give different
 sublist of 4 integers as sample with equal likeliness.
 
-#### Follow up
+#### Follow up 1
 
 Use `Collections.swap()` method
+
+#### Follow up 2
+
+Online sampling on streaming data
 
 ---
 
