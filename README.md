@@ -50,7 +50,7 @@ We have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 
 #### Follow up
 
-Use `CompletableFutures` to solve the same
+Use `CompletableFuture` to solve the same
 
 #### Youtube
 

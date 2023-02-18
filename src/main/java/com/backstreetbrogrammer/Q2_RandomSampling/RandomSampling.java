@@ -9,6 +9,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
+import static com.backstreetbrogrammer.PrintUtils.printIntList;
 
 public class RandomSampling {
 
@@ -36,8 +39,8 @@ public class RandomSampling {
         return data.subList(0, sampleSize);
     }
 
-    public List<Integer> onlineSampling(final InputStream is,
-                                        final int sampleSize) throws IOException, ClassNotFoundException {
+    public List<Integer> randomOnlineSampling(final InputStream is,
+                                              final int sampleSize) throws IOException, ClassNotFoundException {
         final List<Integer> runningSample = new ArrayList<>(sampleSize);
         final var ois = new ObjectInputStream(is);
 
@@ -56,8 +59,12 @@ public class RandomSampling {
                 if (idToReplace < sampleSize) {
                     runningSample.set(idToReplace, k);
                 }
+                TimeUnit.MILLISECONDS.sleep(500L);
+                printIntList(runningSample);
             } catch (final EOFException e) {
                 break;
+            } catch (final InterruptedException e) {
+                e.printStackTrace();
             }
         }
         ois.close();

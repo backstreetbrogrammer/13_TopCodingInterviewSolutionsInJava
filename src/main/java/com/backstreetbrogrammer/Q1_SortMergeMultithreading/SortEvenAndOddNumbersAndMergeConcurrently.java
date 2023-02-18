@@ -6,6 +6,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.IntStream;
 
+import static com.backstreetbrogrammer.PrintUtils.printIntArray;
+
 /**
  * Given an array of N size with random integers. Write a multithreaded program that performs the following operations on
  * this array:
@@ -98,13 +100,13 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
 
         // print all the 3 arrays
         System.out.println("Sorted Even array:");
-        print(sortedEvenArray);
+        printIntArray(sortedEvenArray);
 
         System.out.println("Sorted Odd array:");
-        print(sortedOddArray);
+        printIntArray(sortedOddArray);
 
         System.out.println("Sorted Combined array with Evens first and then Odds:");
-        print(combinedArray);
+        printIntArray(combinedArray);
         System.out.println("----------------------------\n");
     }
 
@@ -125,17 +127,11 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
                                                         IntStream.concat(Arrays.stream(sortedEvens),
                                                                          Arrays.stream(sortedOdds)).toArray());
         try {
-            print(futureThread1.get());
+            printIntArray(futureThread1.get());
         } catch (final InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
     }
 
-    private void print(final int[] array) {
-        for (final int num : array) {
-            System.out.printf("%d, ", num);
-        }
-        System.out.println();
-    }
 
 }
