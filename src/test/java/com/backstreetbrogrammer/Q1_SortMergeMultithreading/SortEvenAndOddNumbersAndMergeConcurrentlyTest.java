@@ -22,10 +22,10 @@ public class SortEvenAndOddNumbersAndMergeConcurrentlyTest {
 
     @ParameterizedTest
     @MethodSource("getInputArrays")
-    @DisplayName("Sort and Merge using CompletableFutures")
-    void sortAndMergeUsingCompletableFutures(final int[] arr) {
+    @DisplayName("Sort and Merge using CompletableFuture")
+    void sortAndMergeUsingCompletableFuture(final int[] arr) {
         sortAndMerge.setArray(arr);
-        sortAndMerge.multiThreadingTestUsingCompletableFutures();
+        sortAndMerge.multiThreadingTestUsingCompletableFuture();
     }
 
     private static Stream<Arguments> getInputArrays() {

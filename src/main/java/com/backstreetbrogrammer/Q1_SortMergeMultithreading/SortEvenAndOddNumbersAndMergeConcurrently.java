@@ -62,7 +62,7 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
 
             // create and start the threads
             sortAndMerge.multiThreadingTest();
-            sortAndMerge.multiThreadingTestUsingCompletableFutures();
+            sortAndMerge.multiThreadingTestUsingCompletableFuture();
         }
     }
 
@@ -110,7 +110,7 @@ public class SortEvenAndOddNumbersAndMergeConcurrently {
         System.out.println("----------------------------\n");
     }
 
-    public void multiThreadingTestUsingCompletableFutures() {
+    public void multiThreadingTestUsingCompletableFuture() {
         if (array == null || array.length == 0) return;
 
         final CompletableFuture<int[]> futureThread1

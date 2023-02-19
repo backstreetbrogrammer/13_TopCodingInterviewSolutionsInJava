@@ -60,7 +60,7 @@ public class RandomSamplingTest {
     @Test
     @DisplayName("Test Random online sampling")
     void testOnlineSampling() throws IOException, ClassNotFoundException {
-        final var onlineSamplingPath = Path.of("src", "test", "resources", "onlineSampling.txt");
+        final var onlineSamplingPath = Path.of("src", "test", "resources", "onlineSampling.ser");
         try (final OutputStream os = Files.newOutputStream(onlineSamplingPath);
              final ObjectOutputStream oos = new ObjectOutputStream(os)) {
             data.forEach(i -> {

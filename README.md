@@ -5,11 +5,11 @@
 ## Table of contents
 
 1. Sort and Merge using multithreading
-    - using Thread / Runnable
-    - using CompletableFutures
+    - using `Thread` / `Runnable`
+    - using `CompletableFuture`
 2. Random Sampling
-    - using Collections.shuffle()
-    - using Collections.swap()
+    - using `Collections.shuffle()`
+    - using `Collections.swap()`
     - online sampling on streaming data
 3. Deadlock
     - demonstrate deadlock issue
@@ -19,7 +19,8 @@
     - using Java collections
     - bounded concurrent stack using locks
     - concurrent stack using CAS (Atomic classes)
-5. Odd Even Printer
+5. Odd-Even printer using multithreading
+6. Implement UNIX `tail` command in Java
 
 ### Youtube
 
@@ -55,6 +56,10 @@ Use `CompletableFuture` to solve the same
 #### Youtube
 
 - [02 - Sort and Merge using multithreading](https://youtu.be/oR8qfx3Gops)
+- [03 - Sort and Merge using multithreading - SOLUTION - Code Demo 1](https://youtu.be/yG5ksLYtINk)
+- [04 - Sort and Merge using multithreading - SOLUTION - Code Demo 2](https://youtu.be/1g1Jy4lZShM)
+- [05 - Sort and Merge using multithreading - SOLUTION - Code Demo 3](https://youtu.be/nAl1nnQSR7Q)
+- [06 - Sort and Merge using CompletableFuture - SOLUTION - Code Demo 4](https://youtu.be/1Vj_-EDQOxU)
 
 ---
 
@@ -72,7 +77,7 @@ Hint: Use `Collections.shuffle()` method
 
 #### Example:
 
-We have a list of integers: 1 to 10 We need a sublist of sample size of 4 integers. Every run should give different
+We have a list of integers: 1 to 10 and we need a sublist of sample size of 4 integers. Every run should give different
 sublist of 4 integers as sample with equal likeliness.
 
 #### Follow up 1
@@ -81,7 +86,12 @@ Use `Collections.swap()` method
 
 #### Follow up 2
 
-Online sampling on streaming data
+Online sampling on streaming data.
+
+**Network packet sniffer** is designed such that to provide a uniform sample of packets for a network session.
+
+Write a program that takes as input a size `k` and read packets, continuously maintaining a uniform random sample osf
+size `k` of the read packets.
 
 ---
 
@@ -104,7 +114,21 @@ A stack is a linear data structure that follows the LIFO - **Last-In, First-Out*
 be inserted or removed only at one end of it, also called a **top**. Last object inserted will be the first object to
 get.
 
-Implement a stack in Java.
+Implement a stack in Java without using any standard Java Collections.
+
+Following 3 methods should be implemented from the `StackI` interface.
+
+```java
+public interface StackI<T> {
+
+    T pop();
+
+    void push(T item);
+
+    T peek();
+
+}
+```
 
 #### Follow up 1
 
@@ -118,6 +142,8 @@ Implement a bounded concurrent stack in Java using locks.
 
 Implement a concurrent stack in Java using CAS (Atomic classes in Java).
 
+This solution is based on [Treiber stack algorithm](https://en.wikipedia.org/wiki/Treiber_stack)
+
 ---
 
 ### Problem 5: Print odd and even numbers by 2 threads
@@ -128,5 +154,18 @@ Write Java code in which the 2 threads, running concurrently, print the numbers 
 - Thread 2 prints even numbers from 1 to 100
 
 ---
+
+### Problem 6: Implement UNIX tail command in Java
+
+UNIX `tail` command displays the last part of a file on the unix or linux server. Even if the file is being updated
+currently, `tail` command will display the latest data appended to the file in real-time. Thus, `tail` command is very
+useful in monitoring a running application logs.
+
+Write a program to implement the same `tail` command like method in Java. Assume that tail method takes two arguments -
+a filename, and the number of lines, starting from the last line, that are to be printed.
+
+---
+
+
 
 

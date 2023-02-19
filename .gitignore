@@ -52,6 +52,7 @@ bin/
 tmp/
 *.tmp
 *.bak
+*.ser
 *.swp
 *~.nib
 local.properties
