@@ -21,6 +21,11 @@
     - concurrent stack using CAS (Atomic classes)
 5. Odd-Even printer using multithreading
 6. Implement UNIX `tail` command in Java
+    - tail on a static file
+    - tail on a running file (appended in real-time)
+7. False sharing
+    - demonstrate false sharing
+    - resolve false sharing
 
 ### Youtube
 
@@ -164,8 +169,32 @@ useful in monitoring a running application logs.
 Write a program to implement the same `tail` command like method in Java. Assume that tail method takes two arguments -
 a filename, and the number of lines, starting from the last line, that are to be printed.
 
+#### Follow up
+
+Implement the `tail` method for a **running** log file (appended in real-time).
+
 ---
 
+### Problem 7: False Sharing
+
+In computer science, false sharing is a performance-degrading usage pattern that can arise in systems with distributed,
+coherent caches at the size of the smallest resource block managed by the caching mechanism.
+
+False sharing in Java occurs when two threads running on two different CPUs write to two different variables which
+happen to be stored within the same CPU cache line. When the first thread modifies one of the variables - the whole CPU
+cache line is invalidated in the CPU caches of the other CPU where the other thread is running. This means, that the
+other CPUs need to reload the content of the invalidated cache line - even if they don't really need the variable that
+was modified within that cache line.
+
+![False Sharing](FalseSharing.PNG)
+
+Write a program to demonstrate false sharing in Java.
+
+#### Follow up
+
+Modify the program to resolve false sharing and improve performance. (Measure the performance)
+
+---
 
 
 

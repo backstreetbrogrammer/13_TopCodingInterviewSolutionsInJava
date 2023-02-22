@@ -60,6 +60,8 @@ local.properties
 .loadpath
 .recommenders
 
+bb*.txt
+
 # External tool builders
 .externalToolBuilders/
 
