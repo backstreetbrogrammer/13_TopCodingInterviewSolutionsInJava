@@ -14,7 +14,7 @@
 3. Deadlock
     - demonstrate deadlock issue
     - resolve deadlock issue
-4. Implement a Stack in Java
+4. Implement a `Stack` in Java
     - without using Java collections
     - using Java collections
     - bounded concurrent stack using locks
@@ -26,6 +26,7 @@
 7. False sharing
     - demonstrate false sharing
     - resolve false sharing
+8. Implement a `Timer` class
 
 ### Youtube
 
@@ -196,5 +197,23 @@ Modify the program to resolve false sharing and improve performance. (Measure th
 
 ---
 
+### Problem 8: Implement a Timer class
+
+Develop a `Timer` class that manages the execution of deferred tasks. The deferred task can be running an application at
+a particular time (say 8 am UTC). That application can do anything - like listening to market data, printing a file,
+sending an email, etc.
+
+The `Timer` constructor should take as its argument an object which includes a `run` method and a `name` field which is
+a `String`.
+
+`Timer(Object objectWithRunMethod, String name)`
+
+Timer must support:
+
+- **starting a thread**, identified by `name`, at a given time in the future
+- **canceling a thread**, identified by `name` => however, the cancel request is to be ignored if the thread has already
+  started
+
+---
 
 
