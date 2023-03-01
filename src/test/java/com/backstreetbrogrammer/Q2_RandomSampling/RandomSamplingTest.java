@@ -73,7 +73,7 @@ public class RandomSamplingTest {
         }
 
         try (final InputStream is = Files.newInputStream(onlineSamplingPath)) {
-            printIntList(sampling.randomOnlineSampling(is, 4));
+            printIntList(sampling.randomOnlineSampling(is));
         }
     }
 

@@ -39,8 +39,7 @@ public class RandomSampling {
         return data.subList(0, sampleSize);
     }
 
-    public List<Integer> randomOnlineSampling(final InputStream is,
-                                              final int sampleSize) throws IOException, ClassNotFoundException {
+    public List<Integer> randomOnlineSampling(final InputStream is) throws IOException, ClassNotFoundException {
         final List<Integer> runningSample = new ArrayList<>(sampleSize);
         final var ois = new ObjectInputStream(is);
 

@@ -96,8 +96,14 @@ Online sampling on streaming data.
 
 **Network packet sniffer** is designed such that to provide a uniform sample of packets for a network session.
 
-Write a program that takes as input a size `k` and read packets, continuously maintaining a uniform random sample osf
+Write a program that takes as input a size `k` and read packets, continuously maintaining a uniform random sample of
 size `k` of the read packets.
+
+#### Youtube
+
+- [07 - Random Sampling - PROBLEM STATEMENT](https://youtu.be/SjEHO2qWy7g)
+- [08 - Random Sampling - SOLUTION - Code Demo 1](https://youtu.be/sFlR7Dnzp6g)
+- [09 - Random Sampling - SOLUTION - Using Collections.shuffle() method](https://youtu.be/aoAeKm4_Eks)
 
 ---
 
@@ -203,10 +209,10 @@ Develop a `Timer` class that manages the execution of deferred tasks. The deferr
 a particular time (say 8 am UTC). That application can do anything - like listening to market data, printing a file,
 sending an email, etc.
 
-The `Timer` constructor should take as its argument an object which includes a `run` method and a `name` field which is
-a `String`.
+The `Timer` constructor should take as its argument a `name` field which is a `String` and other argument as
+a `Runnable` object with `run` method defining the task.
 
-`Timer(Object objectWithRunMethod, String name)`
+`Timer(String name, Runnable objectWithRunMethod)`
 
 Timer must support:
 
