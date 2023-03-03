@@ -26,7 +26,7 @@
 7. False sharing
     - demonstrate false sharing
     - resolve false sharing
-8. Implement a `Timer` class
+8. Implement Read-Write Lock
 
 ### Youtube
 
@@ -104,6 +104,8 @@ size `k` of the read packets.
 - [07 - Random Sampling - PROBLEM STATEMENT](https://youtu.be/SjEHO2qWy7g)
 - [08 - Random Sampling - SOLUTION - Code Demo 1](https://youtu.be/sFlR7Dnzp6g)
 - [09 - Random Sampling - SOLUTION - Using Collections.shuffle() method](https://youtu.be/aoAeKm4_Eks)
+- [10 - Random Sampling - SOLUTION - Using Collections.swap() method](https://youtu.be/jkhO8uCBs1U)
+- [11 - Random Online Sampling - SOLUTION - Code Demo 1](https://youtu.be/Z_W7k-bYbqI)
 
 ---
 
@@ -203,23 +205,42 @@ Modify the program to resolve false sharing and improve performance. (Measure th
 
 ---
 
-### Problem 8: Implement a Timer class
+### Problem 8: Implement Read-Write Lock
 
-Develop a `Timer` class that manages the execution of deferred tasks. The deferred task can be running an application at
-a particular time (say 8 am UTC). That application can do anything - like listening to market data, printing a file,
-sending an email, etc.
+Suppose there is an `Object obj`, which is **read from** and **written by** many threads.
 
-The `Timer` constructor should take as its argument a `name` field which is a `String` and other argument as
-a `Runnable` object with `run` method defining the task.
+We need to ensure that no thread may access `obj` for reading or writing while another thread is writing to `obj`.
 
-`Timer(String name, Runnable objectWithRunMethod)`
+If no thread is writing to `obj` and no threads have **requested write access**, then multiple threads can **read**
+the `obj` at the same time.
 
-Timer must support:
+Implement the synchronization mechanism which adheres to the above read-write conditions.
 
-- **starting a thread**, identified by `name`, at a given time in the future
-- **canceling a thread**, identified by `name` => however, the cancel request is to be ignored if the thread has already
-  started
+#### Follow up 1 - Read re-entrance
+
+A thread is granted **read re-entrance** if it can get read access (no writers or write requests), or if it already has
+read access (regardless of **write requests**).
+
+#### Follow up 2 - Write re-entrance
+
+Write re-entrance is granted only if the thread has already got write access.
+
+#### Follow up 3 - Read to Write re-entrance
+
+A thread that have read access to also obtain write access. For this to be allowed the thread must be the only reader.
+
+#### Follow up 4 - Write to Read re-entrance
+
+A thread that has got write access needs read-access too. A writer should always be granted read access if requested. If
+a thread has got write access, no other threads can have read nor write access.
+
+#### Follow up 5 - Fully Reentrant ReadWriteLock
+
+Combine all the above for fully re-entrant ReadWriteLock.
+
 
 ---
+
+
 
 
