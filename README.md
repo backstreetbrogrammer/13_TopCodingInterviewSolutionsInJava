@@ -32,6 +32,7 @@
     - Read to Write Reentrant
     - Write to Read Reentrant
     - Fully Reentrant
+9. Implement UNIX `find` command in Java
 
 ### Youtube
 
@@ -111,6 +112,8 @@ size `k` of the read packets.
 - [09 - Random Sampling - SOLUTION - Using Collections.shuffle() method](https://youtu.be/aoAeKm4_Eks)
 - [10 - Random Sampling - SOLUTION - Using Collections.swap() method](https://youtu.be/jkhO8uCBs1U)
 - [11 - Random Online Sampling - SOLUTION - Code Demo 1](https://youtu.be/Z_W7k-bYbqI)
+- [12 - Random Online Sampling - SOLUTION - Code Demo 2](https://youtu.be/fvZr3PASqnI)
+- [13 - Random Online Sampling - SOLUTION - Code Demo 3](https://youtu.be/728Pb3RbdAI)
 
 ---
 
@@ -174,7 +177,7 @@ Write Java code in which the 2 threads, running concurrently, print the numbers 
 
 ---
 
-### Problem 6: Implement UNIX tail command in Java
+### Problem 6: Implement UNIX `tail` command in Java
 
 UNIX `tail` command displays the last part of a file on the unix or linux server. Even if the file is being updated
 currently, `tail` command will display the latest data appended to the file in real-time. Thus, `tail` command is very
@@ -243,9 +246,8 @@ a thread has got write access, no other threads can have read nor write access.
 
 Combine all the above for fully re-entrant ReadWriteLock.
 
-
 ---
 
-
+### Problem 9: Implement UNIX `find` command in Java
 
 
