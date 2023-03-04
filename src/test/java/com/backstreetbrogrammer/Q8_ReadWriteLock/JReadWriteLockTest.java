@@ -66,7 +66,9 @@ public class JReadWriteLockTest {
                 Arguments.of(new JReadWriteLock()),
                 Arguments.of(new JReadWriteLockReadReentrant()),
                 Arguments.of(new JReadWriteLockWriteReentrant()),
-                Arguments.of(new JReadWriteLockReadToWriteReentrant())
+                Arguments.of(new JReadWriteLockReadToWriteReentrant()),
+                Arguments.of(new JReadWriteLockWriteToReadReentrant()),
+                Arguments.of(new JReadWriteLockFullyReentrant())
                         );
     }
 

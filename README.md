@@ -27,6 +27,11 @@
     - demonstrate false sharing
     - resolve false sharing
 8. Implement Read-Write Lock
+    - Read Reentrant
+    - Write Reentrant
+    - Read to Write Reentrant
+    - Write to Read Reentrant
+    - Fully Reentrant
 
 ### Youtube
 
