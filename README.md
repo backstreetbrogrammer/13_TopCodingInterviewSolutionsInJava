@@ -128,6 +128,12 @@ Write a program to demonstrate deadlock issue.
 
 Modify the program to resolve the deadlock issue.
 
+#### Youtube
+
+- [14 - Deadlock - PROBLEM STATEMENT](https://youtu.be/ZSA9di_lixM)
+- [15 - Deadlock - SOLUTION - Code Demo 1](https://youtu.be/IPjFzRoJ4A8)
+- [16 - Deadlock - SOLUTION - Code Demo 2](https://youtu.be/rwnX3uyrD0Y)
+
 ---
 
 ### Problem 4: Stack
