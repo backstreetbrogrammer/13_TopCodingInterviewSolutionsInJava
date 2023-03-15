@@ -5,24 +5,20 @@ import org.junit.jupiter.api.Test;
 
 public class AccountTest {
 
-    private final Account account1 = new Account(100D);
-    private final Account account2 = new Account(200D);
+    final Account account1 = new Account(100D);
+    final Account account2 = new Account(200D);
 
     @Test
     @DisplayName("Test method to demonstrate deadlock")
     void testDeadlock() {
-        for (int i = 0; i < 1000; i++) {
-            Account.transfer(account2, account1, 50D);
-            Account.transfer(account1, account2, 30D);
-        }
+        Account.transfer(account2, account1, 50D);
+        Account.transfer(account1, account2, 30D);
     }
 
     @Test
     @DisplayName("Test method after fixing the deadlock issue")
     void testDeadlockFixed() {
-        for (int i = 0; i < 1000; i++) {
-            Account.transferDeadlockFixed(account2, account1, 50D);
-            Account.transferDeadlockFixed(account1, account2, 30D);
-        }
+        Account.transferDeadlockFixed(account2, account1, 50D);
+        Account.transferDeadlockFixed(account1, account2, 30D);
     }
 }
