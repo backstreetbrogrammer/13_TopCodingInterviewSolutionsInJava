@@ -174,6 +174,13 @@ Implement a concurrent stack in Java using CAS (Atomic classes in Java).
 
 This solution is based on [Treiber stack algorithm](https://en.wikipedia.org/wiki/Treiber_stack)
 
+#### Youtube
+
+- [17 - Stack - PROBLEM STATEMENT](https://youtu.be/GDeqvqme0YU)
+- [18 - Stack custom implementation - SOLUTION - Code Demo](https://youtu.be/4LRcaIEA6Tg)
+- [19 - Stack custom implementation - SOLUTION - Unit Test Code Demo](https://youtu.be/YiB3XGTclwo)
+- [20 - Java Stack Follow Up 1 - SOLUTION - Unit Test Code Demo](https://youtu.be/85wSAvotfHY)
+
 ---
 
 ### Problem 5: Print odd and even numbers by 2 threads
