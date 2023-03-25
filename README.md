@@ -142,6 +142,8 @@ A stack is a linear data structure that follows the LIFO - **Last-In, First-Out*
 be inserted or removed only at one end of it, also called a **top**. Last object inserted will be the first object to
 get.
 
+![Stack](Stack.PNG)
+
 Implement a stack in Java without using any standard Java Collections.
 
 Following 3 methods should be implemented from the `StackI` interface.
