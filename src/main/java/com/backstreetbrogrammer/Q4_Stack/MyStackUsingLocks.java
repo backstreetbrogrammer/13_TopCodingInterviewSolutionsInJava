@@ -10,16 +10,16 @@ public class MyStackUsingLocks<T> implements StackI<T> {
     private final int capacity;
 
     private final Lock lock;
-    private final Condition stackEmptyCondition;
-    private final Condition stackFullCondition;
+    private final Condition stackNotEmptyCondition;
+    private final Condition stackNotFullCondition;
 
     public MyStackUsingLocks(final int capacity) {
         this.capacity = capacity;
         stack = new Stack<>();
 
         lock = new ReentrantLock();
-        stackEmptyCondition = lock.newCondition();
-        stackFullCondition = lock.newCondition();
+        stackNotEmptyCondition = lock.newCondition();
+        stackNotFullCondition = lock.newCondition();
     }
 
     @Override
@@ -27,13 +27,13 @@ public class MyStackUsingLocks<T> implements StackI<T> {
         try {
             lock.lock();
             while (stack.size() == 0) {
-                stackEmptyCondition.await();
+                stackNotEmptyCondition.await();
             }
             return stack.pop();
         } catch (final InterruptedException e) {
             e.printStackTrace();
         } finally {
-            stackFullCondition.signalAll();
+            stackNotFullCondition.signalAll();
             lock.unlock();
         }
         return null;
@@ -44,10 +44,10 @@ public class MyStackUsingLocks<T> implements StackI<T> {
         try {
             lock.lock();
             while (stack.size() == capacity) {
-                stackFullCondition.await();
+                stackNotFullCondition.await();
             }
             stack.push(item);
-            stackEmptyCondition.signalAll();
+            stackNotEmptyCondition.signalAll();
         } catch (final InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -60,7 +60,7 @@ public class MyStackUsingLocks<T> implements StackI<T> {
         try {
             lock.lock();
             while (stack.size() == 0) {
-                stackEmptyCondition.await();
+                stackNotEmptyCondition.await();
             }
             return stack.peek();
         } catch (final InterruptedException e) {
