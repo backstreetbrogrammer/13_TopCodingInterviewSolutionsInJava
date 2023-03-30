@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +14,7 @@ public class MyStackUsingCASTest {
 
     @Test
     @DisplayName("Test MyStack CAS implementation")
-    void testMyStack() {
+    void testMyStackCAS() {
         myStack.push("A");
         myStack.push("B");
         myStack.push("C");
@@ -32,7 +33,7 @@ public class MyStackUsingCASTest {
 
     @Test
     @DisplayName("Test MyStack CAS implementation using multiple threads")
-    void testMyStackMultithreaded() throws InterruptedException {
+    void testMyStackCASMultithreaded() throws InterruptedException {
         final var latch = new CountDownLatch(2);
         final Thread thread1 = new Thread(() -> {
             myStack.push("A");
@@ -43,24 +44,22 @@ public class MyStackUsingCASTest {
             myStack.push("F");
             latch.countDown();
         });
-
         thread1.start();
+        TimeUnit.SECONDS.sleep(1L);
 
         final Thread thread2 = new Thread(() -> {
-            myStack.pop();
+            myStack.pop(); // F
             latch.countDown();
         });
-
         thread2.start();
 
         latch.await();
 
-        assertEquals("F", myStack.peek());
-        assertEquals("F", myStack.pop());
+        assertEquals("E", myStack.peek());
+        assertEquals("E", myStack.pop());
 
         myStack.push("G");
-
         assertEquals("G", myStack.pop());
-        assertEquals("E", myStack.peek());
+        assertEquals("D", myStack.peek());
     }
 }
