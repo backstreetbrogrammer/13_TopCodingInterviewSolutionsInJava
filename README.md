@@ -216,6 +216,10 @@ i=99, [OddThread]
 i=100, [EvenThread]
 ```
 
+#### Youtube
+
+- [28 - Odd Even Printer Using Multithreading - PROBLEM STATEMENT](https://youtu.be/tS4G7U-FxmU)
+
 ---
 
 ### Problem 6: Implement UNIX `tail` command in Java

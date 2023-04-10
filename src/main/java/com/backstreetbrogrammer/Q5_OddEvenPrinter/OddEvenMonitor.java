@@ -10,10 +10,10 @@ public class OddEvenMonitor {
 
     private boolean turn = true;
 
-    public void waitTurn(final boolean oddTurn) {
+    public void waitTurn(final boolean oldTurn) {
         try {
             lock.lock();
-            while (turn != oddTurn) { // even thread will wait here for the first time
+            while (turn != oldTurn) { // even thread will wait here for the first time
                 toggleTurnCondition.await();
             }
         } catch (final InterruptedException e) {
