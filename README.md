@@ -197,6 +197,25 @@ Write Java code in which the 2 threads, running concurrently, print the numbers 
 - Thread 1 prints odd numbers from 1 to 100
 - Thread 2 prints even numbers from 1 to 100
 
+Optionally, name the 2 threads as **OddThread** and **EvenThread** and print the thread name while printing the numbers.
+
+Sample output:
+
+```
+i=1, [OddThread]
+i=2, [EvenThread]
+i=3, [OddThread]
+i=4, [EvenThread]
+i=5, [OddThread]
+...
+...
+i=96, [EvenThread]
+i=97, [OddThread]
+i=98, [EvenThread]
+i=99, [OddThread]
+i=100, [EvenThread]
+```
+
 ---
 
 ### Problem 6: Implement UNIX `tail` command in Java

@@ -17,7 +17,7 @@ public class OddEvenThread implements Runnable {
         }
         for (; i <= 100; i += 2) {
             monitor.waitTurn(isOdd);
-            System.out.println("i = " + i);
+            System.out.printf("i=%d, [%s]%n", i, Thread.currentThread().getName());
             monitor.toggleTurn();
         }
     }
