@@ -219,6 +219,7 @@ i=100, [EvenThread]
 #### Youtube
 
 - [28 - Odd Even Printer Using Multithreading - PROBLEM STATEMENT](https://youtu.be/tS4G7U-FxmU)
+- [29 - Odd Even Printer Using Multithreading - SOLUTION - Code Demo 1](https://youtu.be/avl3BTLAXyo)
 
 ---
 
