@@ -1,34 +1,16 @@
 package com.backstreetbrogrammer.Q7_FalseSharing;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 public class FalseSharingDemo {
 
-    private volatile long a;
-    private volatile long b;
-
-    public long getA() {
-        return a;
-    }
-
-    public void setA(final long a) {
-        this.a = a;
-    }
-
-    public long getB() {
-        return b;
-    }
-
-    public void setB(final long b) {
-        this.b = b;
-    }
-
-    public final static class VolatileLong {
+    public final static class VolatileLongPadded {
+        public long q1, q2, q3, q4, q5, q6;
         public volatile long value = 0L;
-        //public long p1, p2, p3, p4, p5, p6;
+        public long q11, q12, q13, q14, q15, q16;
+
     }
 
-    public final static class PaddedAtomicLong extends AtomicLong {
-        public volatile long p1, p2, p3, p4, p5, p6 = 7L;
+    public final static class VolatileLongUnPadded {
+        public volatile long value = 0L;
     }
+
 }
