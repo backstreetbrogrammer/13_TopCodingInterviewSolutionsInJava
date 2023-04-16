@@ -251,6 +251,10 @@ cache line is invalidated in the CPU caches of the other CPU where the other thr
 other CPUs need to reload the content of the invalidated cache line - even if they don't really need the variable that
 was modified within that cache line.
 
+In simpler words, CPU cache is organized in lines of data. Each line can hold 8 longs - 64 bytes. When a visible
+variable is modified in L1 or L2 cache, all the line is marked "dirty" for the other caches. A read on a dirty line
+triggers a refresh of this line -> which is to flush the data from main memory.
+
 ![False Sharing](FalseSharing.PNG)
 
 Write a program to demonstrate false sharing in Java.
