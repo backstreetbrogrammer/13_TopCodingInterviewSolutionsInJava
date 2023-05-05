@@ -238,6 +238,10 @@ a filename, and the number of lines, starting from the last line, that are to be
 
 Implement the `tail` method for a **running** log file (appended in real-time).
 
+#### Youtube
+
+- [32 - Implement UNIX tail command in Java - PROBLEM STATEMENT](https://youtu.be/9NCo8Lr-1IE)
+
 ---
 
 ### Problem 7: False Sharing
