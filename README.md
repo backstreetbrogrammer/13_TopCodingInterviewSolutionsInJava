@@ -4,35 +4,35 @@
 
 ## Table of contents
 
-1. Sort and Merge using multithreading
+1. [Sort and Merge using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-1-sort-and-merge-using-multithreading)
     - using `Thread` / `Runnable`
     - using `CompletableFuture`
-2. Random Sampling
+2. [Random Sampling](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-2-random-sampling)
     - using `Collections.shuffle()`
     - using `Collections.swap()`
     - online sampling on streaming data
-3. Deadlock
+3. [Deadlock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-3-deadlock)
     - demonstrate deadlock issue
     - resolve deadlock issue
-4. Implement a `Stack` in Java
+4. [Implement a `Stack` in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-4-stack)
     - without using Java collections
     - using Java collections
     - bounded concurrent stack using locks
     - concurrent stack using CAS (Atomic classes)
-5. Odd-Even printer using multithreading
-6. Implement UNIX `tail` command in Java
+5. [Odd-Even printer using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-4-stack)
+6. [Implement UNIX `tail` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-6-implement-unix-tail-command-in-java)
     - tail on a static file
     - tail on a running file (appended in real-time)
-7. False sharing
+7. [False sharing](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-7-false-sharing)
     - demonstrate false sharing
     - resolve false sharing
-8. Implement Read-Write Lock
+8. [Implement Read-Write Lock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-8-implement-read-write-lock)
     - Read Reentrant
     - Write Reentrant
     - Read to Write Reentrant
     - Write to Read Reentrant
     - Fully Reentrant
-9. Implement UNIX `find` command in Java
+9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-9-implement-unix-find-command-in-java)
 
 ### Youtube
 
@@ -243,6 +243,7 @@ Implement the `tail` method for a **running** log file (appended in real-time).
 - [32 - Implement UNIX tail command in Java - PROBLEM STATEMENT](https://youtu.be/9NCo8Lr-1IE)
 - [33 - Implement UNIX tail command in Java - SOLUTION - Code Demo 1](https://youtu.be/yDDnpWQjNpY)
 - [34 - Implement UNIX tail command in Java - SOLUTION - Code Demo 2](https://youtu.be/I9KPISd2LsQ)
+- [35 - Implement UNIX tail command in Java - SOLUTION - Code Demo 3](https://youtu.be/LRucuskHIVQ)
 
 ---
 
