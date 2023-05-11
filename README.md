@@ -244,6 +244,9 @@ Implement the `tail` method for a **running** log file (appended in real-time).
 - [33 - Implement UNIX tail command in Java - SOLUTION - Code Demo 1](https://youtu.be/yDDnpWQjNpY)
 - [34 - Implement UNIX tail command in Java - SOLUTION - Code Demo 2](https://youtu.be/I9KPISd2LsQ)
 - [35 - Implement UNIX tail command in Java - SOLUTION - Code Demo 3](https://youtu.be/LRucuskHIVQ)
+- [36 - Implement UNIX tail command in Java - SOLUTION - Code Demo 4](https://youtu.be/iUfZN4GD668)
+- [37 - Implement UNIX tail command in Java - SOLUTION - Code Demo 5](https://youtu.be/ixn7qUWKplU)
+- [38 - Implement UNIX tail command in Java - SOLUTION - Code Demo 6](https://youtu.be/HIKMZX3rEGQ)
 
 ---
 
