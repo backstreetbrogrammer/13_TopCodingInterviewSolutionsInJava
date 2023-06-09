@@ -273,6 +273,10 @@ Write a program to demonstrate false sharing in Java.
 
 Modify the program to resolve false sharing and improve performance. (Measure the performance)
 
+#### Youtube
+
+- [39 - False Sharing - PROBLEM STATEMENT](https://youtu.be/MVz4qfZ0bzM)
+
 ---
 
 ### Problem 8: Implement Read-Write Lock
