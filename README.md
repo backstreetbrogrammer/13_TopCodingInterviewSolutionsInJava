@@ -276,7 +276,9 @@ Modify the program to resolve false sharing and improve performance. (Measure th
 #### Youtube
 
 - [39 - False Sharing - PROBLEM STATEMENT](https://youtu.be/MVz4qfZ0bzM)
-- [40 - Demonstrate False Sharing - SOLUTION](https://youtu.be/zgVUMP6dO10)
+- [40 - Demonstrate False Sharing - SOLUTION - Code Demo 1](https://youtu.be/zgVUMP6dO10)
+- [41 - Demonstrate False Sharing - SOLUTION - Code Demo 2](https://youtu.be/q8F9-sWe_es)
+- [42 - Resolve False Sharing - SOLUTION - Code Demo 3](https://youtu.be/5a5K5ELQXJQ)
 
 ---
 
