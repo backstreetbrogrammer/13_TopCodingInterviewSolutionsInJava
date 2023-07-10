@@ -319,4 +319,27 @@ Combine all the above for fully re-entrant ReadWriteLock.
 
 ### Problem 9: Implement UNIX `find` command in Java
 
+UNIX `find` command locates files based on some user-specified criteria and either prints the pathname of each matched
+object or, if another action is requested, performs that action on each matched object.
+
+It initiates a search from a desired starting location and then recursively traverses the nodes (directories) of a
+hierarchical structure (typically a tree). `find` can traverse and search through different file systems of partitions
+belonging to one or more storage devices mounted under the starting directory.
+
+The possible search criteria include a **pattern** to match against the **filename**. By default, `find` returns a list
+of all files below the current working directory, although users can limit the search to any desired maximum number of
+levels under the starting directory.
+
+Write a program to implement the same `find` command like method in Java. Assume that `find` method takes two arguments
+
+- a directory name as String, and
+- the file name pattern as String, that are to be printed
+
+```
+Usage: java JFind <directory> <filename-pattern>
+```
+
+---
+
+
 
