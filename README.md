@@ -33,6 +33,7 @@
     - Write to Read Reentrant
     - Fully Reentrant
 9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-9-implement-unix-find-command-in-java)
+10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-10-design-lru-cache)
 
 ### Youtube
 
@@ -341,5 +342,43 @@ Usage: java JFind <directory> <filename-pattern>
 
 ---
 
+### Problem 10: Design LRU cache
 
+In computing, a `cache` is a hardware or software component that stores data so that future requests for that data can
+be served faster; the data stored in a cache might be the result of an earlier computation or a copy of data stored
+elsewhere.
+
+A `cache hit` occurs when the requested data can be found in a cache, while a `cache miss` occurs when it cannot.
+
+Cache **hits** are served by reading data from the cache, which is faster than recomputing a result or reading from a
+slower data store; thus, the more requests that can be served from the cache, the faster the system performs.
+
+To be cost-effective and to enable efficient use of data, caches must be relatively small.
+
+The **Least Recently Used** (`LRU`) cache is a cache eviction algorithm that organizes elements in order of use. In LRU,
+as the name suggests, the element that hasn't been used for the longest time will be evicted from the cache.
+
+Design an LRU cache using Java provided API / collections - `LinkedHashMap`.
+
+#### Follow up
+
+Design an LRU cache which uses classic data structures and is also thread safe.
+
+**LRU cache algorithm**
+
+1. **Inserting key,value pair** `put(K,V)`:
+    - Create a new `linked list` **node** with `key`, `value` and insert into `head` of `linked list`.
+    - Insert `key -> node` mapping into `hash table`.
+
+2. **Get value by key** `get(K)`:
+    - Lookup **node** in `hash table` and return node `value`.
+    - Then update **most recently used** item by moving the node to **front** (`head`) of `linked list`.
+    - `Hash table` does **NOT** need to be updated.
+
+3. **Finding least recently used**:
+    - **Least recently used** item will be found at the `end` of the `linked list`.
+
+4. **Eviction when cache is full**:
+    - Remove `tail` of `linked list`.
+    - Get `key` from `linked list` **node** and remove `key` from `hash table`.
 
