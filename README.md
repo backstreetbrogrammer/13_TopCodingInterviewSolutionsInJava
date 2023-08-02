@@ -294,6 +294,40 @@ the `obj` at the same time.
 
 Implement the synchronization mechanism which adheres to the above read-write conditions.
 
+#### Re-entrance
+
+With a reentrant lock / locking mechanism, the attempt to acquire the same lock will succeed, and will increment an
+internal counter belonging to the lock. The lock will only be released when the current holder of the lock has released
+it and counter is set to zero.
+
+It means we can do something like this on a **single** thread:
+
+- Acquire a lock on "foo"
+- Do something
+- Acquire a lock on "foo". Note that we haven't released the lock that we previously acquired.
+- ...
+- Release lock on "foo"
+- ...
+- Release lock on "foo"
+
+Here's an example in Java using primitive object locks / monitors which are reentrant:
+
+```
+final Object lock = new Object();
+...
+synchronized (lock) {
+    ...
+    doSomething(lock, ...)
+    ...
+}
+
+public void doSomething(Object lock, ...) {
+    synchronized (lock) {
+        ...
+    }
+}
+```
+
 #### Follow up 1 - Read re-entrance
 
 A thread is granted **read re-entrance** if it can get read access (no writers or write requests), or if it already has
