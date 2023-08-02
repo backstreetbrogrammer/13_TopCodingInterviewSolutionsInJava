@@ -350,6 +350,11 @@ a thread has got write access, no other threads can have read nor write access.
 
 Combine all the above for fully re-entrant ReadWriteLock.
 
+#### Youtube
+
+- [43 - Implement Read-Write Lock - PROBLEM STATEMENT](https://youtu.be/bwHID3mQ5HY)
+- [44 - Implement Read Write Lock - SOLUTION - Code Demo](https://youtu.be/SGtzx3jL1Uo)
+
 ---
 
 ### Problem 9: Implement UNIX `find` command in Java
