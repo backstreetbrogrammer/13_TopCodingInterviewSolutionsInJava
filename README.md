@@ -34,6 +34,7 @@
     - Fully Reentrant
 9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-9-implement-unix-find-command-in-java)
 10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-10-design-lru-cache)
+11. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-11-write-a-fix-log-parser)
 
 ### Youtube
 
@@ -425,4 +426,58 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 4. **Eviction when cache is full**:
     - Remove `tail` of `linked list`.
     - Get `key` from `linked list` **node** and remove `key` from `hash table`.
+
+---
+
+### Problem 11: Write a FIX Log Parser
+
+**What is FIX protocol?**
+
+The **Financial Information eXchange (FIX)** protocol is a messaging standard developed specifically for the real-time
+electronic exchange of securities transactions.
+
+More information can be found at [FIX Trading community](https://www.fixtrading.org/)
+
+The original FIX message encoding is known as `tagvalue` encoding. Each field consists of a unique numeric tag and a
+value. The tag identifies the field semantically. Therefore, messages are self-describing. `Tagvalue` encoding is
+character-based, using `ASCII` codes.
+
+Example of a FIX message: **Execution Report** (Pipe character is used to represent `SOH` character: `\u0001`)
+
+```
+8=FIX.4.2 | 9=178 | 35=8 | 49=PHLX | 56=PERS | 52=20071123-05:30:00.000 | 11=ATOMNOCCC9990900 | 20=3 | 150=E | 39=E | 55=MSFT | 167=CS | 54=1 | 38=15 | 40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 | 14=0 | 6=0 | 10=128 | 
+```
+
+Sample FIX log containing various FIX messages:
+
+[fix_log1.txt](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava/blob/main/src/main/resources/fix_log1.txt)
+
+**Problem Statement**
+
+We are a given a FIX log as:
+
+[fix_log2.txt](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava/blob/main/src/main/resources/fix_log2.txt)
+
+We need to calculate the **position** of each stock or symbol given in the FIX log and display.
+
+```
+{MSFT=123000.0, ORCL=123000.0, SPY=-72100.0}
+```
+
+Here total position for Microsoft (`MSFT`) and Oracle (`ORCL`) stocks is `123000.0`. For `SPY`, it's `-72100.0`.
+
+**Formula for calculating position:**
+
+Suppose quantity of stocks traded is denoted as `qtyTraded` at price `price`.
+
+- for all **buy** transactions: `qtyTraded * price`
+- for all **sell** transactions: `qtyTraded * price * -1`
+
+**For example:**
+
+If we buy 100 stocks of Apple at 200 USD, then current position of Apple stocks is = `100 * 200 = 20000`
+
+Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple stocks is = `20000 - (50*100) = 15000`
+
+---
 

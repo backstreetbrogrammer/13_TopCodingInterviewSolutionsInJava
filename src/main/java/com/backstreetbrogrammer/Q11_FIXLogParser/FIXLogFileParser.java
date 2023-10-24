@@ -24,7 +24,8 @@ public class FIXLogFileParser {
             while ((line = br.readLine()) != null) {
                 // 1. check if its trade execution logs
                 if (isTradeLog(line)) {
-                    System.out.println(line); // for debug
+                    // for debug
+                    // System.out.println(line);
 
                     // 2. extract all the tag-value pairs and store in a map
                     final Map<Integer, String> fixTagValueMap = extractTagValueFields(line);
