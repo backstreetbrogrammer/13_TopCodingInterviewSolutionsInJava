@@ -1,6 +1,9 @@
 package com.backstreetbrogrammer.Q11_FIXLogParser;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -103,5 +106,31 @@ public class FIXLogFileParserTest {
                 assertFalse(fixTagValueMap.isEmpty());
             }
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("getFixLogLine")
+    void extractTagFieldValuesWithPipeSeparator(final String line, final String fieldExtractorRegex) {
+        final Pattern pattern = Pattern.compile(fieldExtractorRegex);
+        final Matcher matcher = pattern.matcher(line);
+        final Map<Integer, String> fixTagValueMap = new HashMap<>();
+        while (matcher.find()) {
+            final int tag = Integer.parseInt(matcher.group(1));
+            final String tagValue = matcher.group(2).strip();
+            fixTagValueMap.put(tag, tagValue);
+        }
+        System.out.println(fixTagValueMap);
+        assertFalse(fixTagValueMap.isEmpty());
+    }
+
+    private static Stream<Arguments> getFixLogLine() {
+        return Stream.of(
+                Arguments.of("8=FIX.4.2 | 9=178 | 35=8 | 49=PHLX | 56=PERS | 52=20071123-05:30:00.000 | " +
+                                     "11=ATOMNOCCC9990900 | 20=3 | 150=E | 39=E | 55=MSFT | 167=CS | 54=1 | 38=15 | " +
+                                     "40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 | 14=0 | 6=0 | 10=128 |",
+                             "\\b(\\d+)=([^\\u007c]+)"),
+                Arguments.of("8=FIX.4.2   9=178   35=8   49=PHLX   56=PERS   52=20071123-05:30:00.000   11=ATOMNOCCC9990900   20=3   150=E   39=E   55=MSFT   167=CS   54=1   38=15   40=2   44=15   58=PHLX EQUITY TESTING   59=0   47=C   32=0   31=0   151=15   14=0   6=0   10=128  ",
+                             "\\b(\\d+)=([^\\s]+)")
+                        );
     }
 }

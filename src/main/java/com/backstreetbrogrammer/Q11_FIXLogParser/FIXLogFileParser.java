@@ -20,6 +20,7 @@ public class FIXLogFileParser {
         try (final BufferedReader br
                      = Files.newBufferedReader(Path.of("src", "main", "resources", "fix_log2.txt"))) {
             final Map<String, Double> symbolPositionMap = new HashMap<>();
+            final Map<Integer, String> fixTagValueMap = new HashMap<>();
             String line;
             while ((line = br.readLine()) != null) {
                 // 1. check if its trade execution logs
@@ -28,13 +29,16 @@ public class FIXLogFileParser {
                     // System.out.println(line);
 
                     // 2. extract all the tag-value pairs and store in a map
-                    final Map<Integer, String> fixTagValueMap = extractTagValueFields(line);
+                    fixTagValueMap.putAll(extractTagValueFields(line));
                     if (!fixTagValueMap.isEmpty()) {
                         final SymbolPosition symbolPosition = createSymbolPosition(fixTagValueMap);
                         final String symbol = symbolPosition.getSymbol();
                         final double position = symbolPosition.getPosition();
                         symbolPositionMap.merge(symbol, position, Double::sum);
                     }
+
+                    // 3. clear the map after every line parsing
+                    fixTagValueMap.clear();
                 }
             }
             System.out.println(symbolPositionMap);
