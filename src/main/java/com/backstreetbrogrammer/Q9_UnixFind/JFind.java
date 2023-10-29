@@ -62,7 +62,7 @@ public class JFind {
             }
         } catch (final Exception e) {
             usage();
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
