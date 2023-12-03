@@ -293,6 +293,11 @@ We need to ensure that no thread may access `obj` for reading or writing while a
 If no thread is writing to `obj` and no threads have **requested write access**, then multiple threads can **read**
 the `obj` at the same time.
 
+| Access Type  | Condition                                                              | 
+|--------------|------------------------------------------------------------------------|
+| Read Access  | If no threads are writing, and no threads have requested write access. | 
+| Write Access | If no threads are reading or writing.                                  | 
+
 Implement the synchronization mechanism which adheres to the above read-write conditions.
 
 #### Re-entrance
