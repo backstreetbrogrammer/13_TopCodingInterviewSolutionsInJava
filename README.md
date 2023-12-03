@@ -365,6 +365,7 @@ Combine all the above for fully re-entrant ReadWriteLock.
 - [47 - Implement Read Write Lock - READ REENTRANT](https://youtu.be/E9K5kfQCJd0)
 - [48 - Implement Read Write Lock - READ REENTRANT - Code Demo](https://youtu.be/G-6hBnBEOho)
 - [49 - Implement Read Write Lock - READ REENTRANT - Unit Test Code Demo](https://youtu.be/Fp4BtHLaSVk)
+- [50 - Implement Read Write Lock - FULLY REENTRANT Code Demo](https://youtu.be/qCrSlBGwKUU)
 
 ---
 
