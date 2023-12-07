@@ -391,6 +391,10 @@ Write a program to implement the same `find` command like method in Java. Assume
 Usage: java JFind <directory> <filename-pattern>
 ```
 
+#### Youtube
+
+- [51 - Implement UNIX find command in Java](https://youtu.be/3CHphuP4jWE)
+
 ---
 
 ### Problem 10: Design LRU cache
