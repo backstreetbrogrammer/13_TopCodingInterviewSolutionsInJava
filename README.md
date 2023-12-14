@@ -394,6 +394,7 @@ Usage: java JFind <directory> <filename-pattern>
 #### Youtube
 
 - [51 - Implement UNIX find command in Java](https://youtu.be/3CHphuP4jWE)
+- [52 - Implement UNIX find command in Java - SOLUTION](https://youtu.be/LARTL1g8BDc)
 
 ---
 
