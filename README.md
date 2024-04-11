@@ -4,37 +4,37 @@
 
 ## Table of contents
 
-1. [Sort and Merge using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-1-sort-and-merge-using-multithreading)
+1. [Sort and Merge using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-1-sort-and-merge-using-multithreading)
     - using `Thread` / `Runnable`
     - using `CompletableFuture`
-2. [Random Sampling](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-2-random-sampling)
+2. [Random Sampling](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-2-random-sampling)
     - using `Collections.shuffle()`
     - using `Collections.swap()`
     - online sampling on streaming data
-3. [Deadlock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-3-deadlock)
+3. [Deadlock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-3-deadlock)
     - demonstrate deadlock issue
     - resolve deadlock issue
-4. [Implement a `Stack` in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-4-stack)
+4. [Implement a `Stack` in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-4-stack)
     - without using Java collections
     - using Java collections
     - bounded concurrent stack using locks
     - concurrent stack using CAS (Atomic classes)
-5. [Odd-Even printer using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-4-stack)
-6. [Implement UNIX `tail` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-6-implement-unix-tail-command-in-java)
+5. [Odd-Even printer using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-4-stack)
+6. [Implement UNIX `tail` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-6-implement-unix-tail-command-in-java)
     - tail on a static file
     - tail on a running file (appended in real-time)
-7. [False sharing](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-7-false-sharing)
+7. [False sharing](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-7-false-sharing)
     - demonstrate false sharing
     - resolve false sharing
-8. [Implement Read-Write Lock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-8-implement-read-write-lock)
+8. [Implement Read-Write Lock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-8-implement-read-write-lock)
     - Read Reentrant
     - Write Reentrant
     - Read to Write Reentrant
     - Write to Read Reentrant
     - Fully Reentrant
-9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-9-implement-unix-find-command-in-java)
-10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-10-design-lru-cache)
-11. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava#problem-11-write-a-fix-log-parser)
+9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-9-implement-unix-find-command-in-java)
+10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-10-design-lru-cache)
+11. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-11-write-a-fix-log-parser)
 
 ### Youtube
 
