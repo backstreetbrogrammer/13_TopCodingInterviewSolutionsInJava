@@ -438,6 +438,10 @@ Design an LRU cache which uses classic data structures and is also thread safe.
     - Remove `tail` of `linked list`.
     - Get `key` from `linked list` **node** and remove `key` from `hash table`.
 
+#### Youtube
+
+- [53 - Design LRU cache](https://youtu.be/goKe5YE9I-U)
+
 ---
 
 ### Problem 11: Write a FIX Log Parser
