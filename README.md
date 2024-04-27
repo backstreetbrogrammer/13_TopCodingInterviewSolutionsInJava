@@ -497,3 +497,46 @@ Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple st
 
 ---
 
+### Problem 12: Design low latency order matching engine
+
+**_SYSTEMS OF SECURITIES EXCHANGE_**
+
+- **Trading System**: Accept orders, match orders and generate trades, notify trading results and generate market data
+  information
+- **Market Data**: Disseminate Market Data Information
+- **Clearing System**: Settlement of Trading between securities companies
+
+**_ASPECTS OF TRADING SYSTEM_**
+
+- **order trading periods**: opening auction, continuous trading, closing action
+- **order price types**: limit, market, open/close auction, immediate or cancel order, fill or kill, limit orders
+  converted to market in auction
+- **order sides**: buy orders, sell orders, short sell orders, short sell restricted and short sell exempt orders
+- **tick size**: order price granularity for different price ranges
+- **daily price limits**: price range within which an order can execute in a day
+- **trading quantity units**: Stocks at an exchange are traded in quantities that are integral multiples of the
+  predetermined trading unit of each stock, also called as **round lots**
+- **special quotes**: Stocks when large volume of buy or sell orders is placed at close auction and end with special
+  quote displayed
+
+**_ORDER EXECUTION METHODOLOGY_**
+
+During trading, order priority is determined based on two principles:
+
+- **price**
+- **time priority**
+
+**Principle of price priority**
+
+Lowest Sell and Highest Buy orders take precedence over other orders.
+
+For example, a buy order at USD 1010 has priority over a buy order at USD 1000 and will be executed first.
+
+Similarly, a sell order at USD 1000 has priority over a sell order at USD 1010 and will be executed first.
+
+**Principle of time priority**
+
+Among orders at the same price, order accepted earliest by the exchange takes precedence.
+
+![OrderBook](OrderBook.PNG)
+
