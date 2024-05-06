@@ -8,16 +8,16 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * LRU cache algorithm
  * <p>
- * 1. Inserting key,value pair: Create a new LinkedList node with key, value and insert into head of linked list.
+ * 1. Inserting key,value pair: Create a new LinkedList node with the key, value and insert into the head of the linked list.
  * Insert key -> node mapping into hash table.
  * <p>
  * 2. Get value by key: Lookup node in hash table and return node value.
- * Then update most recently used item by moving the node to front (head) of linked list.
+ * Then update the most recently used item by moving the node to front (head) of the linked list.
  * Hash table does NOT need to be updated.
  * <p>
  * 3. Finding least recently used: Least recently used item will be found at the end of the linked list.
  * <p>
- * 4. Eviction: Remove tail of linked list. Get key from linked list node and remove key from hash table.
+ * 4. Eviction: Remove the tail of linked list. Get key from linked list node and remove key from hash table.
  *
  * @param <K>
  * @param <V>
@@ -38,9 +38,9 @@ public class LRUCacheUsingLinkedListAndHashTable<K, V> implements CustomHashTabl
     }
 
     private final int capacity;
-    private Map<K, LinkedListNode<K, V>> hashTable = new ConcurrentHashMap<>();
+    private final Map<K, LinkedListNode<K, V>> hashTable = new ConcurrentHashMap<>();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private LinkedListNode<K, V> listHeadNode, listTailNode;
-    private ReadWriteLock lock = new ReentrantReadWriteLock();
 
     public LRUCacheUsingLinkedListAndHashTable(final int capacity) {
         this.capacity = capacity;
@@ -60,7 +60,7 @@ public class LRUCacheUsingLinkedListAndHashTable<K, V> implements CustomHashTabl
                 return null;
             }
 
-            // Move to front of linked list to mark as most recently used
+            // Move to the front of the linked list to mark as most recently used
             if (node != listHeadNode) {
                 removeFromLinkedList(node);
                 insertAtFrontOfLinkedList(node);
@@ -86,7 +86,7 @@ public class LRUCacheUsingLinkedListAndHashTable<K, V> implements CustomHashTabl
             // remove if key is already present
             remove(key);
 
-            // if full, remove least recently used item from cache
+            // if full, remove the least recently used item from cache
             if (hashTable.size() >= capacity && listTailNode != null) {
                 remove(listTailNode.key);
             }
