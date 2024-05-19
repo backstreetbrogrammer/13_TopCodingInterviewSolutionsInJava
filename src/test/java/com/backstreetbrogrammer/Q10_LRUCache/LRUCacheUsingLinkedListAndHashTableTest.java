@@ -85,8 +85,11 @@ public class LRUCacheUsingLinkedListAndHashTableTest {
         final CountDownLatch countDownLatch = new CountDownLatch(size);
         try {
             IntStream.range(0, size).<Runnable>mapToObj(key -> () -> {
-                lruCache.put("value" + key, key);
-                countDownLatch.countDown();
+                final String newKey = String.format("value%d", key);
+                System.out.printf("Thread:[%s], Key=[%s], Val=[%d]%n",
+                                  Thread.currentThread().getName(), newKey, key);
+                lruCache.put(newKey, key); // value1, 1
+                countDownLatch.countDown(); // 50 times
             }).forEach(executorService::submit);
             countDownLatch.await();
         } finally {

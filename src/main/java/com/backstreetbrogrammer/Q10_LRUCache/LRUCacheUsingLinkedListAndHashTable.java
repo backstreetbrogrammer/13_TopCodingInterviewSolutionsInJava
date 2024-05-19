@@ -1,5 +1,6 @@
 package com.backstreetbrogrammer.Q10_LRUCache;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -38,7 +39,7 @@ public class LRUCacheUsingLinkedListAndHashTable<K, V> implements CustomHashTabl
     }
 
     private final int capacity;
-    private final Map<K, LinkedListNode<K, V>> hashTable = new ConcurrentHashMap<>();
+    private final Map<K, LinkedListNode<K, V>> hashTable = new HashMap<>();
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private LinkedListNode<K, V> listHeadNode, listTailNode;
 
