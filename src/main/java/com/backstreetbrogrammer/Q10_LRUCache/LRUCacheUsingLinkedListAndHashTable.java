@@ -2,7 +2,6 @@ package com.backstreetbrogrammer.Q10_LRUCache;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -43,6 +42,8 @@ public class LRUCacheUsingLinkedListAndHashTable<K, V> implements CustomHashTabl
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private LinkedListNode<K, V> listHeadNode, listTailNode;
 
+    private final Object objectLock = new Object();
+
     public LRUCacheUsingLinkedListAndHashTable(final int capacity) {
         this.capacity = capacity;
     }
@@ -62,9 +63,11 @@ public class LRUCacheUsingLinkedListAndHashTable<K, V> implements CustomHashTabl
             }
 
             // Move to the front of the linked list to mark as most recently used
-            if (node != listHeadNode) {
-                removeFromLinkedList(node);
-                insertAtFrontOfLinkedList(node);
+            synchronized (objectLock) {
+                if (node != listHeadNode) {
+                    removeFromLinkedList(node);
+                    insertAtFrontOfLinkedList(node);
+                }
             }
 
             return node.value;

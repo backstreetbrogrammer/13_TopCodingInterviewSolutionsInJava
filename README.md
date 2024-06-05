@@ -444,6 +444,7 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 - [54 - Design LRU cache using LinkedHashMap in Java](https://youtu.be/lTQd43aSWOo)
 - [55 - Design LRU cache using custom thread-safe data structures](https://youtu.be/wvhQ9vevmrE)
 - [56 - Unit Test multi-threaded LRU cache](https://youtu.be/jwtyePBIf1U)
+- [57 - Bug Fix for threading issue in LRU Cache GET method](https://youtu.be/fn7q3havXIY)
 
 ---
 
