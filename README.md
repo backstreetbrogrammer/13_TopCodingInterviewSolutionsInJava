@@ -46,7 +46,7 @@
 
 ---
 
-### Problem 1: Sort and Merge using multithreading
+## Problem 1: Sort and Merge using multithreading
 
 Given an array of N size with random integers. Write a multithreaded program that performs the following operations on
 this array:
@@ -55,7 +55,7 @@ this array:
 - Thread 2 sorts the odd numbers
 - Thread 3 merge the results with even numbers in the top part of the array
 
-#### Example:
+### Example:
 
 We have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 
@@ -63,11 +63,11 @@ We have an array [2, 29, 3, 0, 11, 8, 32, 94, 9, 1, 7] of 11 elements.
 - Thread 2 results [1, 3, 7, 9, 11, 29]
 - Thread 3 results [0, 2, 8, 32, 94, 1, 3, 7, 9, 11, 29]
 
-#### Follow up
+### Follow up
 
 Use `CompletableFuture` to solve the same
 
-#### Youtube
+### Youtube
 
 - [02 - Sort and Merge using multithreading](https://youtu.be/oR8qfx3Gops)
 - [03 - Sort and Merge using multithreading - SOLUTION - Code Demo 1](https://youtu.be/yG5ksLYtINk)
@@ -77,7 +77,7 @@ Use `CompletableFuture` to solve the same
 
 ---
 
-### Problem 2: Random Sampling
+## Problem 2: Random Sampling
 
 You are working in a software product company and the software product is being used by multiple clients. Whenever a new
 feature is added to the product, company needs to select a **random subset of its clients** to roll out the new feature
@@ -89,16 +89,16 @@ size of the array elements. All subsets should be equally likely.
 
 Hint: Use `Collections.shuffle()` method
 
-#### Example:
+### Example:
 
 We have a list of integers: 1 to 10 and we need a sublist of sample size of 4 integers. Every run should give different
 sublist of 4 integers as sample with equal likeliness.
 
-#### Follow up 1
+### Follow up 1
 
 Use `Collections.swap()` method
 
-#### Follow up 2
+### Follow up 2
 
 Online sampling on streaming data.
 
@@ -107,7 +107,7 @@ Online sampling on streaming data.
 Write a program that takes as input a size `k` and read packets, continuously maintaining a uniform random sample of
 size `k` of the read packets.
 
-#### Youtube
+### Youtube
 
 - [07 - Random Sampling - PROBLEM STATEMENT](https://youtu.be/SjEHO2qWy7g)
 - [08 - Random Sampling - SOLUTION - Code Demo 1](https://youtu.be/sFlR7Dnzp6g)
@@ -119,18 +119,18 @@ size `k` of the read packets.
 
 ---
 
-### Problem 3: Deadlock
+## Problem 3: Deadlock
 
 Suppose there are 2 threads T1 and T2 which need to acquire locks L1 and L2. If T1 first acquires L1 and then T2
 acquires L2, they end up waiting on each other forever.
 
 Write a program to demonstrate deadlock issue.
 
-#### Follow up
+### Follow up
 
 Modify the program to resolve the deadlock issue.
 
-#### Youtube
+### Youtube
 
 - [14 - Deadlock - PROBLEM STATEMENT](https://youtu.be/ZSA9di_lixM)
 - [15 - Deadlock - SOLUTION - Code Demo 1](https://youtu.be/IPjFzRoJ4A8)
@@ -138,7 +138,7 @@ Modify the program to resolve the deadlock issue.
 
 ---
 
-### Problem 4: Stack
+## Problem 4: Stack
 
 A stack is a linear data structure that follows the LIFO - **Last-In, First-Out** principle. That means the objects can
 be inserted or removed only at one end of it, also called a **top**. Last object inserted will be the first object to
@@ -162,21 +162,21 @@ public interface StackI<T> {
 }
 ```
 
-#### Follow up 1
+### Follow up 1
 
 Implement a stack in Java using Java collections.
 
-#### Follow up 2
+### Follow up 2
 
 Implement a bounded concurrent stack in Java using locks.
 
-#### Follow up 3
+### Follow up 3
 
 Implement a concurrent stack in Java using CAS (Atomic classes in Java).
 
 This solution is based on [Treiber stack algorithm](https://en.wikipedia.org/wiki/Treiber_stack)
 
-#### Youtube
+### Youtube
 
 - [17 - Stack - PROBLEM STATEMENT](https://youtu.be/GDeqvqme0YU)
 - [18 - Stack custom implementation - SOLUTION - Code Demo](https://youtu.be/4LRcaIEA6Tg)
@@ -192,7 +192,7 @@ This solution is based on [Treiber stack algorithm](https://en.wikipedia.org/wik
 
 ---
 
-### Problem 5: Print odd and even numbers by 2 threads
+## Problem 5: Print odd and even numbers by 2 threads
 
 Write Java code in which the 2 threads, running concurrently, print the numbers from 1 to 100 **in order**.
 
@@ -218,7 +218,7 @@ i=99, [OddThread]
 i=100, [EvenThread]
 ```
 
-#### Youtube
+### Youtube
 
 - [28 - Odd Even Printer Using Multithreading - PROBLEM STATEMENT](https://youtu.be/tS4G7U-FxmU)
 - [29 - Odd Even Printer Using Multithreading - SOLUTION - Code Demo 1](https://youtu.be/avl3BTLAXyo)
@@ -227,7 +227,7 @@ i=100, [EvenThread]
 
 ---
 
-### Problem 6: Implement UNIX `tail` command in Java
+## Problem 6: Implement UNIX `tail` command in Java
 
 UNIX `tail` command displays the last part of a file on the unix or linux server. Even if the file is being updated
 currently, `tail` command will display the latest data appended to the file in real-time. Thus, `tail` command is very
@@ -236,11 +236,11 @@ useful in monitoring a running application logs.
 Write a program to implement the same `tail` command like method in Java. Assume that tail method takes two arguments -
 a filename, and the number of lines, starting from the last line, that are to be printed.
 
-#### Follow up
+### Follow up
 
 Implement the `tail` method for a **running** log file (appended in real-time).
 
-#### Youtube
+### Youtube
 
 - [32 - Implement UNIX tail command in Java - PROBLEM STATEMENT](https://youtu.be/9NCo8Lr-1IE)
 - [33 - Implement UNIX tail command in Java - SOLUTION - Code Demo 1](https://youtu.be/yDDnpWQjNpY)
@@ -252,7 +252,7 @@ Implement the `tail` method for a **running** log file (appended in real-time).
 
 ---
 
-### Problem 7: False Sharing
+## Problem 7: False Sharing
 
 In computer science, false sharing is a performance-degrading usage pattern that can arise in systems with distributed,
 coherent caches at the size of the smallest resource block managed by the caching mechanism.
@@ -271,11 +271,11 @@ triggers a refresh of this line -> which is to flush the data from main memory.
 
 Write a program to demonstrate false sharing in Java.
 
-#### Follow up
+### Follow up
 
 Modify the program to resolve false sharing and improve performance. (Measure the performance)
 
-#### Youtube
+### Youtube
 
 - [39 - False Sharing - PROBLEM STATEMENT](https://youtu.be/MVz4qfZ0bzM)
 - [40 - Demonstrate False Sharing - SOLUTION - Code Demo 1](https://youtu.be/zgVUMP6dO10)
@@ -284,7 +284,7 @@ Modify the program to resolve false sharing and improve performance. (Measure th
 
 ---
 
-### Problem 8: Implement Read-Write Lock
+## Problem 8: Implement Read-Write Lock
 
 Suppose there is an `Object obj`, which is **read from** and **written by** many threads.
 
@@ -300,7 +300,7 @@ the `obj` at the same time.
 
 Implement the synchronization mechanism which adheres to the above read-write conditions.
 
-#### Re-entrance
+### Re-entrance
 
 With a reentrant lock / locking mechanism, the attempt to acquire the same lock will succeed, and will increment an
 internal counter belonging to the lock. The lock will only be released when the current holder of the lock has released
@@ -334,29 +334,29 @@ public void doSomething(Object lock, ...) {
 }
 ```
 
-#### Follow up 1 - Read re-entrance
+### Follow up 1 - Read re-entrance
 
 A thread is granted **read re-entrance** if it can get read access (no writers or write requests), or if it already has
 read access (regardless of **write requests**).
 
-#### Follow up 2 - Write re-entrance
+### Follow up 2 - Write re-entrance
 
 Write re-entrance is granted only if the thread has already got write access.
 
-#### Follow up 3 - Read to Write re-entrance
+### Follow up 3 - Read to Write re-entrance
 
 A thread that have read access to also obtain write access. For this to be allowed the thread must be the only reader.
 
-#### Follow up 4 - Write to Read re-entrance
+### Follow up 4 - Write to Read re-entrance
 
 A thread that has got write access needs read-access too. A writer should always be granted read access if requested. If
 a thread has got write access, no other threads can have read nor write access.
 
-#### Follow up 5 - Fully Reentrant ReadWriteLock
+### Follow up 5 - Fully Reentrant ReadWriteLock
 
 Combine all the above for fully re-entrant ReadWriteLock.
 
-#### Youtube
+### Youtube
 
 - [43 - Implement Read-Write Lock - PROBLEM STATEMENT](https://youtu.be/bwHID3mQ5HY)
 - [44 - Implement Read Write Lock - SOLUTION - Code Demo](https://youtu.be/SGtzx3jL1Uo)
@@ -369,7 +369,7 @@ Combine all the above for fully re-entrant ReadWriteLock.
 
 ---
 
-### Problem 9: Implement UNIX `find` command in Java
+## Problem 9: Implement UNIX `find` command in Java
 
 UNIX `find` command locates files based on some user-specified criteria and either prints the pathname of each matched
 object or, if another action is requested, performs that action on each matched object.
@@ -391,14 +391,14 @@ Write a program to implement the same `find` command like method in Java. Assume
 Usage: java JFind <directory> <filename-pattern>
 ```
 
-#### Youtube
+### Youtube
 
 - [51 - Implement UNIX find command in Java](https://youtu.be/3CHphuP4jWE)
 - [52 - Implement UNIX find command in Java - SOLUTION](https://youtu.be/LARTL1g8BDc)
 
 ---
 
-### Problem 10: Design LRU cache
+## Problem 10: Design LRU cache
 
 In computing, a `cache` is a hardware or software component that stores data so that future requests for that data can
 be served faster; the data stored in a cache might be the result of an earlier computation or a copy of data stored
@@ -416,7 +416,7 @@ as the name suggests, the element that hasn't been used for the longest time wil
 
 Design an LRU cache using Java provided API / collections - `LinkedHashMap`.
 
-#### Follow up
+### Follow up
 
 Design an LRU cache which uses classic data structures and is also thread safe.
 
@@ -438,7 +438,7 @@ Design an LRU cache which uses classic data structures and is also thread safe.
     - Remove `tail` of `linked list`.
     - Get `key` from `linked list` **node** and remove `key` from `hash table`.
 
-#### Youtube
+### Youtube
 
 - [53 - Design LRU cache](https://youtu.be/goKe5YE9I-U)
 - [54 - Design LRU cache using LinkedHashMap in Java](https://youtu.be/lTQd43aSWOo)
@@ -448,18 +448,81 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 
 ---
 
-### Problem 11: Write a FIX Log Parser
+## Problem 11: Write a FIX Log Parser
+
+### FIX Protocol Primer
 
 **What is FIX protocol?**
 
 The **Financial Information eXchange (FIX)** protocol is a messaging standard developed specifically for the real-time
 electronic exchange of securities transactions.
 
-More information can be found at [FIX Trading community](https://www.fixtrading.org/)
+The FIX protocol specification was originally authored in 1992 by Robert "Bob" Lamoureux and Chris Morstatt to enable
+electronic communication of equity trading data between Fidelity Investments and Salomon Brothers.
 
-The original FIX message encoding is known as `tagvalue` encoding. Each field consists of a unique numeric tag and a
-value. The tag identifies the field semantically. Therefore, messages are self-describing. `Tagvalue` encoding is
-character-based, using `ASCII` codes.
+At the time, this information was communicated verbally over the **_telephone_**.
+
+Fidelity realized that information from their broker-dealers could be routed to the wrong trader, or simply lost when
+the parties hung up their phones.
+
+It wanted such communications to be replaced with **_machine-readable_** data which could then be shared among traders,
+analyzed, acted on and stored.
+
+![FIXSampleFlow](FIXSampleFlow.PNG)
+
+Reference: [FIX Trading community](https://www.fixtrading.org/)
+
+**Technical Specifications**
+
+Originally, the FIX standard was monolithic, including application layer semantics, message encoding, and session layer
+in a single technical specification.
+
+In other words, FIX was an all-in-one protocol standard that defines:
+
+- Message **Encoding**
+- **Session** Layer Messaging Protocol
+- **Application** Layer Messaging Protocol
+- Domain Model (aka **Data Dictionary**) for Orders, Executions, Market Data, Allocations, etc.
+
+The most popular FIX versions `4.2` and `4.4` use this monolithic technical specification until FIX `5.0`, which
+separates the FIX **_session_** layer from the FIX **_application_** layer.
+
+**Message Encoding**
+
+Message encoding, called **Presentation Layer** in the **Open Systems Interconnection model** (`OSI` model), is
+responsible for the wire format of messages.
+
+In the seven-layer OSI model of computer networking, the presentation layer is **layer 6** and serves as the data
+translator for the network. It is sometimes called the **syntax layer**.
+
+![OSI_model](OSI_model.PNG)
+
+**Tagvalue encoding**
+
+The original FIX message encoding is known as `tagvalue` encoding.
+
+Each field consists of a unique numeric tag and a value.
+
+The tag identifies the field semantically. Therefore, messages are self-describing.
+
+`Tagvalue` encoding is character-based, using `ASCII` codes.
+
+**FIX tagvalue message format**
+
+A message is composed of a **header**, a **body**, and a **trailer**.
+
+The message fields are separated by the [start of heading](https://en.wikipedia.org/wiki/C0_and_C1_control_codes#SOH)
+(SOH) character (ASCII `0x01`).
+
+Up to `FIX.4.4`, the header contains **three** fields: `8 (BeginString)`, `9 (BodyLength)`, and `35 (MsgType)`.
+
+From `FIXT.1.1` / `FIX.5.0`, the header contains five or six fields: `8 (BeginString)`, `9 (BodyLength)`,
+`35 (MsgType)`, `49 (SenderCompID)`, `56 (TargetCompID)` and the optional `1128 (ApplVerID)`.
+
+The content of the **message body** is defined by the message type (`35 MsgType`) in the **header**.
+
+The **trailer** contains the **last** field of the message, `10 (Checksum)`, always expressed as a three-digit number
+(e.g. `10=002`).
 
 Example of a FIX message: **Execution Report** (Pipe character is used to represent `SOH` character: `\u0001`)
 
@@ -467,11 +530,96 @@ Example of a FIX message: **Execution Report** (Pipe character is used to repres
 8=FIX.4.2 | 9=178 | 35=8 | 49=PHLX | 56=PERS | 52=20071123-05:30:00.000 | 11=ATOMNOCCC9990900 | 20=3 | 150=E | 39=E | 55=MSFT | 167=CS | 54=1 | 38=15 | 40=2 | 44=15 | 58=PHLX EQUITY TESTING | 59=0 | 47=C | 32=0 | 31=0 | 151=15 | 14=0 | 6=0 | 10=128 | 
 ```
 
+**Body**
+
+FIX messages are formed from several fields; each field has a **tag-value pairing** that is separated from the next
+field by a delimiter SOH (`0x01`).
+
+The **tag** is an **integer** that indicates the meaning of the field.
+
+The value is an **array of bytes** that hold a specific meaning for the particular tag.
+
+For example, tag `48` is `SecurityID`, a string that identifies the security.
+
+Tag `22` is `IDSource`, an integer that indicates the identifier class being used.
+
+The values may be in plain text or encoded as pure binary (in which case the value is preceded by a length field).
+
+The FIX protocol defines meanings for most tags, but leaves a range of tags reserved for private use between consenting
+parties => these tags are also called **custom** tags.
+
+The FIX protocol also defines sets of fields that make a particular message; within the set of fields, some will be
+**mandatory** and others **optional**.
+
+The ordering of fields within the message is generally unimportant, however **repeating groups** are preceded by a count
+and encrypted fields are preceded by their length.
+
+The message is broken into three distinct sections: the **head**, **body** and **tail**.
+
+Fields must remain within the correct section and within each section, the position may be important as fields can act
+as delimiters that stop one message from running into the next.
+
+The final field in any FIX message is `tag 10 (checksum)`.
+
+There are two main groups of messages: **admin** and **application**.
+
+The **admin** messages handle the basics of a **FIX session**.
+
+They allow for a **session** to be started and terminated and for recovery of missed messages.
+
+The **application** messages deal with the sending and receiving of trade-related information such as an order request
+or information on the current state and subsequent execution of that order.
+
+**Body length**
+
+The body length is the character count starting at `tag 35` (included) all the way to `tag 10` (excluded), including
+trailing SOH delimiters.
+
+The example below (displayed with SOH delimiters as `'|'`) has a body length of `65`:
+
+![FIXBodyLength](FIXBodyLength.PNG)
+
+**Checksum**
+
+The checksum of a FIX message is always the **last** field in the message, with `tag 10` and a `3` character value.
+
+It is given by **summing** the **ASCII** value of all characters in the message (except for the checksum field itself),
+then modulo `256`.
+
+For example, in the message above, the summation of all ASCII values (including the SOH characters with ASCII value `1`)
+results in `4158`.
+
+Performing the modulo operation gives the value `62`.
+
+Since the checksum is composed of three characters, this results in `10=062`.
+
 Sample FIX log containing various FIX messages:
 
 [fix_log1.txt](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava/blob/main/src/main/resources/fix_log1.txt)
 
-**Problem Statement**
+One way to remember or refer all these FIX tags is to use these two sites:
+
+- [B2BITS](https://btobits.com/fixopaedia/index.html) - this is my personal favorite
+- [FIXimate](https://fiximate.fixtrading.org/)
+
+### FIX Session Layer
+
+FIX is a **point-to-point**, **sequenced**, **session-oriented** protocol.
+
+This means that a FIX session must be established before any sequenced messages may be exchanged.
+
+However, sequenced messages must be exchanged to establish a FIX session.
+
+This is analogous to two people starting the conversation on a telephone or mobile.
+
+FIX is meant to be agnostic to the underlying transport, although, in practice, it is almost always implemented over a
+long-running **TCP** connection, where the lifecycle of the FIX session coincides with the lifecycle of the TCP
+connection.
+
+Although it seems that the use of FIX sequence numbers over TCP is seemingly redundant, given that TCP itself is a
+sequenced, session-oriented protocol, since FIX’s sequence numbers are meant to survive **TCP disconnects**.
+
+### Problem Statement
 
 We are a given a FIX log as:
 
@@ -500,7 +648,7 @@ Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple st
 
 ---
 
-### Problem 12: Design low latency order matching engine
+## Problem 12: Design low latency order matching engine
 
 **_SYSTEMS OF SECURITIES EXCHANGE_**
 
