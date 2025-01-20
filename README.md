@@ -499,7 +499,7 @@ Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple st
 - **tick size**: order price granularity for different price ranges
 - **daily price limits**: price range within which an order can execute in a day
 - **trading quantity units**: Stocks at an exchange are traded in quantities that are integral multiples of the
-  predetermined trading unit of each stock, also called as **round lots**
+  pre-determined trading unit of each stock, also called as **round lots**
 - **special quotes**: Stocks when large volume of buy or sell orders is placed at close auction and end with special
   quote displayed
 
@@ -523,4 +523,55 @@ Similarly, a sell order at USD 1000 has priority over a sell order at USD 1010 a
 Among orders at the same price, order accepted earliest by the exchange takes precedence.
 
 ![OrderBook](OrderBook.PNG)
+
+### Problem Statement
+
+A Stock Exchange's Matching Engine is fundamental to all trading activities.
+
+Not only does it maintain and manage all the investor's orders, it also generates trades from them.
+
+The Matching Engine has to process a large amount of data at any given interval.
+
+On top of this, it has to accomplish multiple functions on the back of each order processed (e.g. sending Market Data
+Update, Storing the Order, Generating any resulting Trade).
+
+Your challenge is to design a Stock Exchange's Matching Engine’s crossing functionality, storing orders and generate any
+resulting trades from new orders. Below are some requirements:
+
+- Implement in Java
+- Be able to handle multiple client connections into the Engine
+- The Solution needs to be thread safe
+
+You are free to list any assumptions made during this exercise.
+
+For example, you may assume that the orders received by the Exchange is of a certain fixed format which you have
+defined.
+
+Bear in mind that the goal of this exercise is to demonstrate your ability to design and implement a workable solution.
+
+Avoid third party libraries where possible.
+
+**Example:**
+
+Say the order book, sorted by price and time looks like this:
+
+![OrderBook12](OrderBook12.PNG)
+
+NB: The order for sorting by time is ascending for buy-side orders and descending for sell-side orders, so that the
+order with the highest priority is always in the center and priorities decrease outwards (up or down, depending on the
+side).
+
+Now imagine a new limit order to **"buy 250 shares at 20.35"** comes in, then it will be filled, in this order:
+
+- 100 shares at 20.25 (order #2)
+- 100 shares at 20.30 (order #1)
+- 50 shares at 20.30 (order #3)
+
+This leaves the order book in the following state:
+
+![AfterFillOrderBook12](AfterFillOrderBook12.PNG)
+
+
+
+
 

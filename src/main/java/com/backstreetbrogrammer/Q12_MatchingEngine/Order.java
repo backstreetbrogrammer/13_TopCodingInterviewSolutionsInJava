@@ -1,14 +1,29 @@
 package com.backstreetbrogrammer.Q12_MatchingEngine;
 
+import java.time.LocalDateTime;
+
 public class Order {
+    enum Side { BUY, SELL }
+    Side side;
+    double price;
+    int quantity;
+    LocalDateTime entryTime;
 
-    private Side side;
-    private int quantity;
-    private int filledQty;
-    private double price;
+    Order(final Side side, final double price, final int quantity) {
+        this.side = side;
+        this.price = price;
+        this.quantity = quantity;
+        this.entryTime = LocalDateTime.now();
+    }
 
-    public boolean isBuy() {
-        return side == Side.BUY;
+    @Override
+    public String toString() {
+        return "Order{" +
+                "side=" + side +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", entryTime=" + entryTime +
+                '}';
     }
 
     public Side getSide() {
@@ -23,7 +38,7 @@ public class Order {
         return quantity;
     }
 
-    public boolean isComplete() {
-        return quantity == filledQty;
+    public LocalDateTime getEntryTime() {
+        return entryTime;
     }
 }
