@@ -538,23 +538,23 @@ This leaves the order book in the following state:
 
 ### Follow Up 1:
 
-Implement cancel of an order. 
+Implement cancel of an order. We can use `OrderID` as reference.
 
 **Example:** 
 
 - Send a new order of `200` shares at `10`
-- Cancel this order (can use `OrderID` as reference)
+- Cancel this order using `OrderID` as reference
 
 ### Follow Up 2:
 
-Implement amendment of an order (only quantity and/or price).
+Implement amendment of an order (only quantity and/or price). We can use `OrderID` as reference.
 
 **Example:**
 
 - Send a new order of `200` shares at `10`
-- Amend qty down to `150` (can use `OrderID` as reference)
-- Amend price up to `15` (can use `OrderID` as reference)
-- Amend qty up `180` and price down to `12` (can use `OrderID` as reference)
+- Amend qty down to `150` 
+- Amend price up to `15` 
+- Amend qty up `180` and price down to `12`
 
 ---
 
