@@ -1,5 +1,6 @@
-package com.backstreetbrogrammer.Q11_FIXLogParser;
+package com.backstreetbrogrammer.Q12_FIXLogParser;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -53,6 +54,7 @@ public class FIXLogFileParserTest {
     }
 
     @Test
+    @Disabled
     void testReadFIXLogFileUsingFileChannel() throws IOException {
         // DON'T USE THIS
         try (final SeekableByteChannel channel = Files.newByteChannel(

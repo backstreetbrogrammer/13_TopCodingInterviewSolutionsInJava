@@ -1,4 +1,4 @@
-package com.backstreetbrogrammer.Q11_FIXLogParser;
+package com.backstreetbrogrammer.Q12_FIXLogParser;
 
 import java.io.BufferedReader;
 import java.io.IOException;

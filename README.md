@@ -34,7 +34,8 @@
     - Fully Reentrant
 9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-9-implement-unix-find-command-in-java)
 10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-10-design-lru-cache)
-11. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-11-write-a-fix-log-parser)
+11. [Design order matching engine](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-11-design-order-matching-engine)
+12. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-12-write-a-fix-log-parser)
 
 ### Youtube
 
@@ -448,40 +449,7 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 
 ---
 
-## Problem 11: Write a FIX Log Parser
-
-[FIX Protocol Primer](https://github.com/backstreetbrogrammer/55_FIX_Protocol_Study_Guide)
-
-### Problem Statement
-
-We are a given a FIX log as:
-
-[fix_log2.txt](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava/blob/main/src/main/resources/fix_log2.txt)
-
-We need to calculate the **position** of each stock or symbol given in the FIX log and display.
-
-```
-{MSFT=123000.0, ORCL=123000.0, SPY=-72100.0}
-```
-
-Here total position for Microsoft (`MSFT`) and Oracle (`ORCL`) stocks is `123000.0`. For `SPY`, it's `-72100.0`.
-
-**Formula for calculating position:**
-
-Suppose quantity of stocks traded is denoted as `qtyTraded` at price `price`.
-
-- for all **buy** transactions: `qtyTraded * price`
-- for all **sell** transactions: `qtyTraded * price * -1`
-
-**For example:**
-
-If we buy 100 stocks of Apple at 200 USD, then current position of Apple stocks is = `100 * 200 = 20000`
-
-Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple stocks is = `20000 - (50*100) = 15000`
-
----
-
-## Problem 12: Design low latency order matching engine
+## Problem 11: Design order matching engine
 
 **_SYSTEMS OF SECURITIES EXCHANGE_**
 
@@ -493,15 +461,12 @@ Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple st
 **_ASPECTS OF TRADING SYSTEM_**
 
 - **order trading periods**: opening auction, continuous trading, closing action
-- **order price types**: limit, market, open/close auction, immediate or cancel order, fill or kill, limit orders
-  converted to market in auction
+- **order price types**: limit, market, open/close auction, immediate or cancel order, fill or kill, etc.
 - **order sides**: buy orders, sell orders, short sell orders, short sell restricted and short sell exempt orders
 - **tick size**: order price granularity for different price ranges
-- **daily price limits**: price range within which an order can execute in a day
+- **daily price limits**: price range within which an order can be executed in a day
 - **trading quantity units**: Stocks at an exchange are traded in quantities that are integral multiples of the
   pre-determined trading unit of each stock, also called as **round lots**
-- **special quotes**: Stocks when large volume of buy or sell orders is placed at close auction and end with special
-  quote displayed
 
 **_ORDER EXECUTION METHODOLOGY_**
 
@@ -514,13 +479,13 @@ During trading, order priority is determined based on two principles:
 
 Lowest Sell and Highest Buy orders take precedence over other orders.
 
-For example, a buy order at USD 1010 has priority over a buy order at USD 1000 and will be executed first.
+For example, a **buy** order at `USD 1010` has priority over a buy order at `USD 1000` and will be executed first.
 
-Similarly, a sell order at USD 1000 has priority over a sell order at USD 1010 and will be executed first.
+Similarly, a **sell** order at `USD 1000` has priority over a sell order at `USD 1010` and will be executed first.
 
 **Principle of time priority**
 
-Among orders at the same price, order accepted earliest by the exchange takes precedence.
+Among orders at the **same price**, order accepted earliest by the exchange takes precedence.
 
 ![OrderBook](OrderBook.PNG)
 
@@ -563,15 +528,66 @@ side).
 
 Now imagine a new limit order to **"buy 250 shares at 20.35"** comes in, then it will be filled, in this order:
 
-- 100 shares at 20.25 (order #2)
-- 100 shares at 20.30 (order #1)
-- 50 shares at 20.30 (order #3)
+- `100` shares at `20.25` (order #2)
+- `100` shares at `20.30` (order #1)
+- `50` shares at `20.30` (order #3)
 
 This leaves the order book in the following state:
 
 ![AfterFillOrderBook12](AfterFillOrderBook12.PNG)
 
+### Follow Up 1:
 
+Implement cancel of an order. 
+
+**Example:** 
+
+- Send a new order of `200` shares at `10`
+- Cancel this order (can use `OrderID` as reference)
+
+### Follow Up 2:
+
+Implement amendment of an order (only quantity and/or price).
+
+**Example:**
+
+- Send a new order of `200` shares at `10`
+- Amend qty down to `150` (can use `OrderID` as reference)
+- Amend price up to `15` (can use `OrderID` as reference)
+- Amend qty up `180` and price down to `12` (can use `OrderID` as reference)
+
+---
+
+## Problem 12: Write a FIX Log Parser
+
+[FIX Protocol Primer](https://github.com/backstreetbrogrammer/55_FIX_Protocol_Study_Guide)
+
+### Problem Statement
+
+We are a given a FIX log as:
+
+[fix_log2.txt](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava/blob/main/src/main/resources/fix_log2.txt)
+
+We need to calculate the **position** of each stock or symbol given in the FIX log and display.
+
+```
+{MSFT=123000.0, ORCL=123000.0, SPY=-72100.0}
+```
+
+Here total position for Microsoft (`MSFT`) and Oracle (`ORCL`) stocks is `123000.0`. For `SPY`, it's `-72100.0`.
+
+**Formula for calculating position:**
+
+Suppose quantity of stocks traded is denoted as `qtyTraded` at price `price`.
+
+- for all **buy** transactions: `qtyTraded * price`
+- for all **sell** transactions: `qtyTraded * price * -1`
+
+**For example:**
+
+If we buy 100 stocks of Apple at 200 USD, then current position of Apple stocks is = `100 * 200 = 20000`
+
+Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple stocks is = `20000 - (50*100) = 15000`
 
 
 

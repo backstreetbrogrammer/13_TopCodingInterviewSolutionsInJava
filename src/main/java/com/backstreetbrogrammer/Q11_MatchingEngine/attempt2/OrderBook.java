@@ -1,4 +1,4 @@
-package com.backstreetbrogrammer.Q12_MatchingEngine;
+package com.backstreetbrogrammer.Q11_MatchingEngine.attempt2;
 
 
 import java.util.Comparator;
@@ -58,9 +58,11 @@ public class OrderBook {
     }
 
     public void printOrderBook() {
-        System.out.println("Buy Orders:");
-        buyOrders.forEach(System.out::println);
-        System.out.println("Sell Orders:");
+        System.out.println("--------------------------");
+        System.out.println("SELL Orders:");
         sellOrders.forEach(System.out::println);
+        System.out.println("\nBUY Orders:");
+        buyOrders.forEach(System.out::println);
+        System.out.println("--------------------------");
     }
 }
