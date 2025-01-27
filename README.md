@@ -451,24 +451,59 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 
 ## Problem 11: Design order matching engine
 
-**_SYSTEMS OF SECURITIES EXCHANGE_**
+### Basic of Stock Exchange
 
-- **Trading System**: Accept orders, match orders and generate trades, notify trading results and generate market data
-  information
-- **Market Data**: Disseminate Market Data Information
-- **Clearing System**: Settlement of Trading between securities companies
+A stock exchange is an exchange where stockbrokers and traders can buy and sell securities, such as shares of
+stock, bonds and other financial instruments.
 
-**_ASPECTS OF TRADING SYSTEM_**
+The basic function of an exchange is to facilitate the **matching** of buyers and sellers efficiently.
 
-- **order trading periods**: opening auction, continuous trading, closing action
-- **order price types**: limit, market, open/close auction, immediate or cancel order, fill or kill, etc.
-- **order sides**: buy orders, sell orders, short sell orders, short sell restricted and short sell exempt orders
-- **tick size**: order price granularity for different price ranges
-- **daily price limits**: price range within which an order can be executed in a day
-- **trading quantity units**: Stocks at an exchange are traded in quantities that are integral multiples of the
-  pre-determined trading unit of each stock, also called as **round lots**
+A stock exchange also disseminates **Market Data** information.
 
-**_ORDER EXECUTION METHODOLOGY_**
+All publicly traded equities have a **bid price** and **ask price** when bought and sold.
+
+The **bid** is the **highest** price an investor is willing to **purchase** a stock.
+
+The **ask (offer)** is the **lowest** price at which an investor is willing to **sell** a stock.
+
+Each time a bid price or ask price is disseminated, it is considered a **quote**.
+
+The U.S. stock market has **three** tiers of quotes:
+
+- **Level I** quotes provide basic price data for a stock, including the **best bid** and **ask price + size** on each
+  side.
+- **Level II** quotes provide more information than Level I quotes by adding **market depth**. Level II typically shows
+  up to the `5-10` best bid and offer prices.
+- **Level III** quotes add greater market depth by providing up to `20` of the best bid and ask prices. Users, primarily
+  brokers and market makers, can also input data directly.
+
+These quotes allow an investor to see how a specific stock performs over time, and where the market action is
+consolidating.
+
+### Stock Orders
+
+For our problem statement, we will consider only the minimum properties of an **Order**.
+
+**_Side_**
+
+Determines whether an Order is a **BUY** order or a **SELL** order. We will not cover **short sells**.
+
+**_Order Type_**
+
+- **Market**: Buy or Sell a stock at whatever the best price is available at the opposite side to
+  guarantee that order is filled.
+- **Limit**: A limit price is given with the order.
+    - For **Buy**, it means that the stock should be bought **at or below** the limit price, otherwise wait (in the
+      order
+      book).
+    - For **Sell**, it means that the stock should be bought at or above the limit price, otherwise wait (in the order
+      book).
+
+We will only cover **LIMIT** order type. We will not cover **MARKET** order type.
+
+### Matching Engine logic
+
+For our problem statement, we will use **price-time priority matching** for orders.
 
 During trading, order priority is determined based on two principles:
 
@@ -477,7 +512,7 @@ During trading, order priority is determined based on two principles:
 
 **Principle of price priority**
 
-Lowest Sell and Highest Buy orders take precedence over other orders.
+**Lowest Sell** and **Highest Buy** orders take precedence over other orders.
 
 For example, a **buy** order at `USD 1010` has priority over a buy order at `USD 1000` and will be executed first.
 
@@ -485,36 +520,14 @@ Similarly, a **sell** order at `USD 1000` has priority over a sell order at `USD
 
 **Principle of time priority**
 
-Among orders at the **same price**, order accepted earliest by the exchange takes precedence.
+Among orders at the **same price**, order accepted **earliest** by the exchange takes precedence.
 
 ![OrderBook](OrderBook.PNG)
 
 ### Problem Statement
 
-A Stock Exchange's Matching Engine is fundamental to all trading activities.
-
-Not only does it maintain and manage all the investor's orders, it also generates trades from them.
-
-The Matching Engine has to process a large amount of data at any given interval.
-
-On top of this, it has to accomplish multiple functions on the back of each order processed (e.g. sending Market Data
-Update, Storing the Order, Generating any resulting Trade).
-
-Your challenge is to design a Stock Exchange's Matching Engine’s crossing functionality, storing orders and generate any
-resulting trades from new orders. Below are some requirements:
-
-- Implement in Java
-- Be able to handle multiple client connections into the Engine
-- The Solution needs to be thread safe
-
-You are free to list any assumptions made during this exercise.
-
-For example, you may assume that the orders received by the Exchange is of a certain fixed format which you have
-defined.
-
-Bear in mind that the goal of this exercise is to demonstrate your ability to design and implement a workable solution.
-
-Avoid third party libraries where possible.
+Design a Stock Exchange's Matching Engine’s crossing functionality, storing orders and generate any resulting trades
+from new orders.
 
 **Example:**
 
@@ -538,22 +551,31 @@ This leaves the order book in the following state:
 
 ### Follow Up 1:
 
-Implement cancel of an order. We can use `OrderID` as reference.
+Implement **Market Data** dissemination.
 
-**Example:** 
-
-- Send a new order of `200` shares at `10`
-- Cancel this order using `OrderID` as reference
+- Level I Quotes: best bid/offer with sizes.
+- Level II Quotes: display of complete Order Book at any given time.
 
 ### Follow Up 2:
 
-Implement amendment of an order (only quantity and/or price). We can use `OrderID` as reference.
+Implement **cancel** of an order. We can use `OrderID` as reference.
 
 **Example:**
 
 - Send a new order of `200` shares at `10`
-- Amend qty down to `150` 
-- Amend price up to `15` 
+- Cancel this order using `OrderID` as reference
+
+### Follow Up 3:
+
+Implement **amendment** of an order (only **quantity** and/or **price**). We can use `OrderID` as reference.
+
+Please note that if the order **price** is changed, the order priority will also change and replaced in the Order Book.
+
+**Example:**
+
+- Send a new order of `200` shares at `10`
+- Amend qty down to `150`
+- Amend price up to `15`
 - Amend qty up `180` and price down to `12`
 
 ---

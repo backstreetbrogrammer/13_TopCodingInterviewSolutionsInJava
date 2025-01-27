@@ -1,9 +1,9 @@
-package com.backstreetbrogrammer.Q11_MatchingEngine.attempt2;
+package com.backstreetbrogrammer.Q11_MatchingEngine;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ExchangeTest2 {
+public class MatchingExchangeTest {
     private final OrderBook orderBook = new OrderBook();
 
     @BeforeEach
