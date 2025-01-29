@@ -451,7 +451,9 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 
 ## Problem 11: Design order matching engine
 
-### Basic of Stock Exchange
+### Basics of Stock Exchange
+
+![StockMarket](StockMarket.PNG)
 
 A stock exchange is an exchange where stockbrokers and traders can buy and sell securities, such as shares of
 stock, bonds and other financial instruments.
@@ -483,6 +485,13 @@ consolidating.
 ### Stock Orders
 
 For our problem statement, we will consider only the minimum properties of an **Order**.
+
+**_Order ID_**
+
+We will maintain a unique integer for every Order as `OrderId`.
+
+For amendment or cancellation of an existing (already placed) order, the original order will be referred using its
+`OrderId`.
 
 **_Side_**
 
