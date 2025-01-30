@@ -36,7 +36,7 @@ public class OrderBook {
     }
 
     private void matchOrders() {
-        // Time complexity for heap peek() and poll(): O(1)
+        // Time complexity for heap => peek() and poll(): O(1)
         while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
                 buyOrders.peek().getPrice() >= sellOrders.peek().getPrice()) {
             final Order buyOrder = buyOrders.poll();

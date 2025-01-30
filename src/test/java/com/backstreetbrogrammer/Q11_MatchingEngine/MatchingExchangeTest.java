@@ -3,18 +3,39 @@ package com.backstreetbrogrammer.Q11_MatchingEngine;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class MatchingExchangeTest {
     private final OrderBook orderBook = new OrderBook();
     private static int i = 0;
 
+    private static void delay() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(1L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @BeforeEach
     void setUp() {
         orderBook.addOrder(new Order(++i, Order.Side.SELL, 20.30, 100));
+        delay();
+
         orderBook.addOrder(new Order(++i, Order.Side.SELL, 20.25, 100));
+        delay();
+
         orderBook.addOrder(new Order(++i, Order.Side.SELL, 20.30, 200));
+        delay();
+
         orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.15, 100));
+        delay();
+
         orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.20, 200));
+        delay();
+
         orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.15, 200));
+        delay();
 
         System.out.println("Current Order Book:");
         orderBook.printOrderBook();
