@@ -24,6 +24,7 @@ public class OrderBook {
         // Add the order
         orderCache.put(order.getId(), order);
 
+        // Time complexity: O(log n)
         if (order.getSide() == Order.Side.BUY) {
             buyOrders.add(order);
         } else {
@@ -35,6 +36,7 @@ public class OrderBook {
     }
 
     private void matchOrders() {
+        // Time complexity for heap peek() and poll(): O(1)
         while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
                 buyOrders.peek().getPrice() >= sellOrders.peek().getPrice()) {
             final Order buyOrder = buyOrders.poll();
