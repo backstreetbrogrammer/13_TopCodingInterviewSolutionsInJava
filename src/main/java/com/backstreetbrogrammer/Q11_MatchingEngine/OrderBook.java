@@ -2,7 +2,8 @@ package com.backstreetbrogrammer.Q11_MatchingEngine;
 
 
 import java.util.Comparator;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.PriorityQueue;
 
 public class OrderBook {
@@ -12,46 +13,46 @@ public class OrderBook {
 
     private final PriorityQueue<Order> sellOrders = new PriorityQueue<>(Comparator.comparingDouble(Order::getPrice)
                                                                                   .thenComparing(Order::getEntryTime));
+    private final Map<Integer, Order> orderCache = new HashMap<>();
 
     public void addOrder(final Order order) {
-        if (order.side == Order.Side.BUY) {
+        // Pre-conditions
+        if ((order == null) || orderCache.containsKey(order.getId())) {
+            throw new IllegalArgumentException("Order is null or already exists");
+        }
+
+        // Add the order
+        orderCache.put(order.getId(), order);
+
+        if (order.getSide() == Order.Side.BUY) {
             buyOrders.add(order);
         } else {
             sellOrders.add(order);
         }
+
+        // Check for match
         matchOrders();
-    }
-
-    public void cancelOrder(final Order.Side side, final int price, final int quantity) {
-        final PriorityQueue<Order> orders = (side == Order.Side.BUY) ? buyOrders : sellOrders;
-        final Iterator<Order> iterator = orders.iterator();
-
-        while (iterator.hasNext()) {
-            final Order order = iterator.next();
-            if (order.price == price && order.quantity == quantity) {
-                iterator.remove();
-                System.out.println("Cancelled Order: " + order);
-                break;
-            }
-        }
     }
 
     private void matchOrders() {
         while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
-                buyOrders.peek().price >= sellOrders.peek().price) {
+                buyOrders.peek().getPrice() >= sellOrders.peek().getPrice()) {
             final Order buyOrder = buyOrders.poll();
             final Order sellOrder = sellOrders.poll();
 
-            final int quantity = Math.min(buyOrder.quantity, sellOrder.quantity);
-            buyOrder.quantity -= quantity;
-            sellOrder.quantity -= quantity;
+            final int buyQty = buyOrder.getQuantity();
+            final int sellQty = sellOrder.getQuantity();
 
-            System.out.println("Matched Order: " + quantity + " @ " + sellOrder.price);
+            final int fillQty = Math.min(buyQty, sellQty);
+            buyOrder.setQuantity(buyQty - fillQty);
+            sellOrder.setQuantity(sellQty - fillQty);
 
-            if (buyOrder.quantity > 0) {
+            System.out.println("Matched Order: " + fillQty + " @ " + sellOrder.getPrice());
+
+            if (buyOrder.getQuantity() > 0) {
                 buyOrders.add(buyOrder);
             }
-            if (sellOrder.quantity > 0) {
+            if (sellOrder.getQuantity() > 0) {
                 sellOrders.add(sellOrder);
             }
         }
