@@ -587,6 +587,25 @@ Please note that if the order **price** is changed, the order priority will also
 - Amend price up to `15`
 - Amend qty up `180` and price down to `12`
 
+### Solution: Matching Engine Algorithm
+
+```
+1. Mantain 2 data-structures DS (array / list / queue) for BUY and SELL orders
+
+2. When a new order arrives, add the order to BUY or SELL orders DS based on the SIDE of the order
+
+3. Sort the orders DS:
+    a) Sort the BUY orders DS in descending price order => highest priced order is at the head or index 0
+    b) Sort the SELL orders DS in ascending price order => lowest priced order is at the head or index 0
+    
+4. Match the orders:
+    a) if the head of the orders DS has BUY price >= SELL price, match otherwise don't match and exit from the loop
+    b) while matching, take the minimum order qty from BUY order and SELL order and generate trades using that qty 
+    c) deduct that matched qty from both the orders
+    c) after matching, if the order qty becomes 0 => remove that order from the DS
+    d) continue a)
+```
+
 ### Youtube
 
 - [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
