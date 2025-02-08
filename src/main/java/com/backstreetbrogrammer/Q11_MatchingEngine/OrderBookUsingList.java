@@ -4,9 +4,9 @@ package com.backstreetbrogrammer.Q11_MatchingEngine;
 import java.util.*;
 
 public class OrderBookUsingList implements OrderBookI {
-    private final List<Order> buyOrders = new ArrayList<>();
+    private final LinkedList<Order> buyOrders = new LinkedList<>();
 
-    private final List<Order> sellOrders = new ArrayList<>();
+    private final LinkedList<Order> sellOrders = new LinkedList<>();
     private final Map<Integer, Order> orderCache = new HashMap<>();
 
     @Override
@@ -20,12 +20,12 @@ public class OrderBookUsingList implements OrderBookI {
         orderCache.put(order.getId(), order);
 
         if (order.getSide() == Order.Side.BUY) {
-            buyOrders.add(order); // O(1)
+            buyOrders.addLast(order); // O(1)
             buyOrders.sort(Comparator.comparingDouble(Order::getPrice)
                                      .reversed()
                                      .thenComparing(Order::getEntryTime)); // O(n * logn)
         } else {
-            sellOrders.add(order); // O(1)
+            sellOrders.addLast(order); // O(1)
             sellOrders.sort(Comparator.comparingDouble(Order::getPrice)
                                       .thenComparing(Order::getEntryTime)); // O(n * logn)
         }
@@ -37,9 +37,9 @@ public class OrderBookUsingList implements OrderBookI {
 
     private void matchOrders() {
         while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
-                buyOrders.get(0).getPrice() >= sellOrders.get(0).getPrice()) {
-            final Order buyOrder = buyOrders.get(0);   // O(1)
-            final Order sellOrder = sellOrders.get(0); // O(1)
+                buyOrders.getFirst().getPrice() >= sellOrders.getFirst().getPrice()) {
+            final Order buyOrder = buyOrders.getFirst();   // O(1)
+            final Order sellOrder = sellOrders.getFirst(); // O(1)
 
             final int buyOrderQuantity = buyOrder.getQuantity();
             final int sellOrderQuantity = sellOrder.getQuantity();
@@ -50,8 +50,8 @@ public class OrderBookUsingList implements OrderBookI {
             buyOrder.setQuantity(buyOrderQuantity - fillQuantity);
             sellOrder.setQuantity(sellOrderQuantity - fillQuantity);
 
-            if (buyOrder.getQuantity() == 0) buyOrders.remove(0);   // O(n)
-            if (sellOrder.getQuantity() == 0) sellOrders.remove(0); // O(n)
+            if (buyOrder.getQuantity() == 0) buyOrders.removeFirst();   // O(1)
+            if (sellOrder.getQuantity() == 0) sellOrders.removeFirst(); // O(1)
         }
     }
 
