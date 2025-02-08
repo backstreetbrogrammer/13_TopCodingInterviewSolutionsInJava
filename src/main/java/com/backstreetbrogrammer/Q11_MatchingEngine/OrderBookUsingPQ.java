@@ -24,11 +24,10 @@ public class OrderBookUsingPQ implements OrderBookI {
         // Add the order
         orderCache.put(order.getId(), order);
 
-        // Time complexity: O(log n)
         if (order.getSide() == Order.Side.BUY) {
-            buyOrders.add(order);
+            buyOrders.add(order); // O(log n)
         } else {
-            sellOrders.add(order);
+            sellOrders.add(order); // O(log n)
         }
 
         // Check for match
@@ -40,8 +39,8 @@ public class OrderBookUsingPQ implements OrderBookI {
         // Time complexity for heap => peek() and poll(): O(1)
         while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
                 buyOrders.peek().getPrice() >= sellOrders.peek().getPrice()) {
-            final Order buyOrder = buyOrders.poll();
-            final Order sellOrder = sellOrders.poll();
+            final Order buyOrder = buyOrders.poll(); // O(1)
+            final Order sellOrder = sellOrders.poll(); // O(1)
 
             final int buyQty = buyOrder.getQuantity();
             final int sellQty = sellOrder.getQuantity();
@@ -53,10 +52,10 @@ public class OrderBookUsingPQ implements OrderBookI {
             System.out.println("Matched Order: " + fillQty + " @ " + sellOrder.getPrice());
 
             if (buyOrder.getQuantity() > 0) {
-                buyOrders.add(buyOrder);
+                buyOrders.add(buyOrder); // O(log n)
             }
             if (sellOrder.getQuantity() > 0) {
-                sellOrders.add(sellOrder);
+                sellOrders.add(sellOrder); // O(log n)
             }
         }
     }
