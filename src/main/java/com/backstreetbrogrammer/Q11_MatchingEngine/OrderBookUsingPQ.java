@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class OrderBook {
+public class OrderBookUsingPQ implements OrderBookI {
     private final PriorityQueue<Order> buyOrders = new PriorityQueue<>(Comparator.comparingDouble(Order::getPrice)
                                                                                  .reversed()
                                                                                  .thenComparing(Order::getEntryTime));
@@ -35,6 +35,7 @@ public class OrderBook {
         matchOrders();
     }
 
+
     private void matchOrders() {
         // Time complexity for heap => peek() and poll(): O(1)
         while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
@@ -60,6 +61,7 @@ public class OrderBook {
         }
     }
 
+    @Override
     public void printOrderBook() {
         System.out.println("--------------------------");
         System.out.println("SELL Orders:");
@@ -67,5 +69,30 @@ public class OrderBook {
         System.out.println("\nBUY Orders:");
         buyOrders.forEach(System.out::println);
         System.out.println("--------------------------");
+    }
+
+    @Override
+    public void printLevel1() {
+
+    }
+
+    @Override
+    public void cancelOrder(final int orderId) {
+
+    }
+
+    @Override
+    public void amendOrder(final int orderId, final int qtyNew) {
+
+    }
+
+    @Override
+    public void amendOrder(final int orderId, final double pxNew) {
+
+    }
+
+    @Override
+    public void amendOrder(final int orderId, final int qtyNew, final double pxNew) {
+
     }
 }

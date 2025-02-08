@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.concurrent.TimeUnit;
 
 public class MatchingExchangeTest {
-    private final OrderBook orderBook = new OrderBook();
+    private final OrderBookI orderBook = new OrderBookUsingList();
     private static int i = 0;
 
     private static void delay() {
