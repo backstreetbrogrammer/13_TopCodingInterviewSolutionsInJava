@@ -590,7 +590,7 @@ Please note that if the order **price** is changed, the order priority will also
 ### Solution: Matching Engine Algorithm
 
 ```
-1. Mantain 2 data-structures DS (array / list / queue) for BUY and SELL orders
+1. Maintain 2 data-structures DS (array / list / queue) for BUY and SELL orders
 
 2. When a new order arrives, add the order to BUY or SELL orders DS based on the SIDE of the order
 
@@ -609,6 +609,7 @@ Please note that if the order **price** is changed, the order priority will also
 ### Youtube
 
 - [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
+- [59 - Order matching engine algorithm](https://youtu.be/ZboDniiFDpc)
 
 ---
 
