@@ -610,6 +610,7 @@ Please note that if the order **price** is changed, the order priority will also
 
 - [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
 - [59 - Order matching engine algorithm](https://youtu.be/ZboDniiFDpc)
+- [60 - Order matching engine using LinkedList](https://youtu.be/YnWzKrCQMqA)
 
 ---
 

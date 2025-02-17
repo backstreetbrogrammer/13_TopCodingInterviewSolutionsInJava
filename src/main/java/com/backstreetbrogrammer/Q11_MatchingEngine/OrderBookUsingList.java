@@ -73,17 +73,49 @@ public class OrderBookUsingList implements OrderBookI {
 
     @Override
     public void printLevel1() {
+        System.out.println("--------------------------");
 
+        System.out.println("BEST ASK~>");
+        if (!sellOrders.isEmpty()) {
+            System.out.printf("%s%n", sellOrders.getFirst());
+        }
+
+        System.out.println("--------------------------");
+
+        System.out.println("BEST BID~>");
+        if (!buyOrders.isEmpty()) {
+            System.out.printf("%s%n", buyOrders.getFirst());
+        }
+
+        System.out.println("--------------------------");
     }
 
     @Override
     public void cancelOrder(final int orderId) {
-
+        final Order order = orderCache.remove(orderId);
+        if (order != null) {
+            if (order.getSide() == Order.Side.BUY) {
+                buyOrders.remove(order); // O(n)
+            } else {
+                sellOrders.remove(order); // O(n)
+            }
+            System.out.printf("Canceled: %s%n", order);
+        } else {
+            System.err.printf("Order ID not found: %d%n", orderId);
+        }
     }
 
     @Override
     public void amendOrder(final int orderId, final int qtyNew) {
+        // Pre-conditions
+        if (!orderCache.containsKey(orderId) || (qtyNew < 1)) {
+            throw new IllegalArgumentException("Order does not exists or incorrect qty");
+        }
 
+        final Order order = orderCache.get(orderId);
+        order.setQuantity(qtyNew);
+
+        System.out.printf("Order amended: %s%n", order);
     }
 
     @Override

@@ -50,4 +50,24 @@ public class MatchingExchangeTest {
         System.out.println("\n### Order book after matching:");
         orderBook.printOrderBook();
     }
+
+    @Test
+    void testLevel1() {
+        orderBook.printLevel1();
+    }
+
+    @Test
+    void testOrderCancel() {
+        System.out.println("\n### Sending BUY order 200@10");
+        orderBook.addOrder(new Order(++i, Order.Side.BUY, 10, 200));
+
+        System.out.println("\n### Order book before cancel:");
+        orderBook.printOrderBook();
+
+        System.out.println("\n### Cancelling the BUY order 200@10");
+        orderBook.cancelOrder(i);
+
+        System.out.println("\n### Order book after cancel:");
+        orderBook.printOrderBook();
+    }
 }
