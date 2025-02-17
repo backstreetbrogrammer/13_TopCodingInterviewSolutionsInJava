@@ -606,6 +606,12 @@ Please note that if the order **price** is changed, the order priority will also
     d) continue a)
 ```
 
+**_Approach 1 - Using LinkedList_**
+
+Using `LinkedList`, we can add / remove at head and tail in constant `O(1)` time.
+
+However, sorting will use the worst-time complexity of `O(n*logn)` making the solution correct but poor in performance.
+
 ### Youtube
 
 - [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
