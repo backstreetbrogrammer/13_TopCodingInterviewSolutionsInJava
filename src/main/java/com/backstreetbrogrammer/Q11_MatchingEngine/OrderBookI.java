@@ -1,5 +1,7 @@
 package com.backstreetbrogrammer.Q11_MatchingEngine;
 
+import java.util.Map;
+
 public interface OrderBookI {
 
     void addOrder(final Order order);
@@ -15,5 +17,7 @@ public interface OrderBookI {
     void amendOrder(final int orderId, final double pxNew);
 
     void amendOrder(final int orderId, final int qtyNew, final double pxNew);
+
+    Map<Integer, Order> getOrderCache();
 
 }

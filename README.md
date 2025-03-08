@@ -606,17 +606,49 @@ Please note that if the order **price** is changed, the order priority will also
     d) continue a)
 ```
 
-**_Approach 1 - Using LinkedList_**
+**_Approach 1: Using LinkedList_**
+
+[LinkedList](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html)
 
 Using `LinkedList`, we can add / remove at head and tail in constant `O(1)` time.
 
 However, sorting will use the worst-time complexity of `O(n*logn)` making the solution correct but poor in performance.
+
+| Data Structure   | Add        | Match        | Cancel | Amend Qty  | Amend Px   | Amend Qty & Px |    
+|------------------|------------|--------------|--------|------------|------------|----------------|    
+| Linked List (1D) | O(n*log n) | O(1) to O(n) | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
 
 ### Youtube
 
 - [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
 - [59 - Order matching engine algorithm](https://youtu.be/ZboDniiFDpc)
 - [60 - Order matching engine using LinkedList](https://youtu.be/YnWzKrCQMqA)
+
+**_Approach 2: Using PriorityQueue_**
+
+![MinMaxHeap](MinMaxHeap.PNG)
+
+We can use:
+
+- `Min-Heap` for **SELL** order book
+- `Max-Heap` for **BUY** order book
+
+[PriorityQueue](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/PriorityQueue.html)
+
+| PriorityQueue Methods                                         | Time Complexity |     
+|---------------------------------------------------------------|-----------------|    
+| enqueuing and dequeuing methods (offer, poll, remove and add) | O(log n)        |
+| remove(Object) and contains(Object) methods                   | O(n)            |
+| retrieval methods (peek, element and size)                    | O(1)            |
+
+Using Priority Queue helps to reduce the adding and sorting of the orders from `O(n*log n)` to `O(log n)`.
+
+Comparing the performance, here is what we have:
+
+| Data Structure      | Add        | Match            | Cancel | Amend Qty  | Amend Px   | Amend Qty & Px |    
+|---------------------|------------|------------------|--------|------------|------------|----------------|    
+| Linked List (1D)    | O(n*log n) | O(1) to O(n)     | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
+| Priority Queue (1D) | O(log n)   | O(log n) to O(n) | O(n)   | O(n)       | O(n)       | O(n)           |
 
 ---
 
