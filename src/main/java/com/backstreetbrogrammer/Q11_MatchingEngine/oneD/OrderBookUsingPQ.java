@@ -1,5 +1,9 @@
-package com.backstreetbrogrammer.Q11_MatchingEngine;
+package com.backstreetbrogrammer.Q11_MatchingEngine.oneD;
 
+
+import com.backstreetbrogrammer.Q11_MatchingEngine.Order;
+import com.backstreetbrogrammer.Q11_MatchingEngine.OrderBookI;
+import com.backstreetbrogrammer.Q11_MatchingEngine.Side;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -20,6 +24,7 @@ public class OrderBookUsingPQ implements OrderBookI {
         return Map.copyOf(orderCache);
     }
 
+    @Override
     public void addOrder(final Order order) {
         // Pre-conditions
         if ((order == null) || orderCache.containsKey(order.getId())) {
@@ -33,7 +38,7 @@ public class OrderBookUsingPQ implements OrderBookI {
         // Add the order
         orderCache.put(order.getId(), order);
 
-        if (order.getSide() == Order.Side.BUY) {
+        if (order.getSide() == Side.BUY) {
             buyOrders.add(order); // O(log n)
         } else {
             sellOrders.add(order); // O(log n)
@@ -159,7 +164,7 @@ public class OrderBookUsingPQ implements OrderBookI {
 
     private void removeOrder(final Order order) {
         orderCache.remove(order.getId());
-        if (order.getSide() == Order.Side.BUY) {
+        if (order.getSide() == Side.BUY) {
             buyOrders.remove(order); // O(n)
         } else {
             sellOrders.remove(order); // O(n)

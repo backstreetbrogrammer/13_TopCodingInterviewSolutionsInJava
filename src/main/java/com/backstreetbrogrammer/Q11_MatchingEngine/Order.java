@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Order {
-    enum Side {BUY, SELL}
 
     private final int id;
 
@@ -13,7 +12,7 @@ public class Order {
     private double price;
     private int quantity;
 
-    Order(final int id, final Side side, final double price, final int quantity) {
+    public Order(final int id, final Side side, final double price, final int quantity) {
         this.id = id;
         this.side = side;
         this.price = price;

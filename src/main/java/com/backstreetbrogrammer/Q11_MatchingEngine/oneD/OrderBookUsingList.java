@@ -1,5 +1,9 @@
-package com.backstreetbrogrammer.Q11_MatchingEngine;
+package com.backstreetbrogrammer.Q11_MatchingEngine.oneD;
 
+
+import com.backstreetbrogrammer.Q11_MatchingEngine.Order;
+import com.backstreetbrogrammer.Q11_MatchingEngine.OrderBookI;
+import com.backstreetbrogrammer.Q11_MatchingEngine.Side;
 
 import java.util.*;
 
@@ -27,7 +31,7 @@ public class OrderBookUsingList implements OrderBookI {
     private void addOrderAndMatch(final Order order) {
         // Add the order
         orderCache.put(order.getId(), order);
-        if (order.getSide() == Order.Side.BUY) {
+        if (order.getSide() == Side.BUY) {
             buyOrders.addLast(order); // O(1)
             buyOrders.sort(Comparator.comparingDouble(Order::getPrice)
                                      .reversed()
@@ -160,7 +164,7 @@ public class OrderBookUsingList implements OrderBookI {
 
     private void removeOrder(final Order order) {
         orderCache.remove(order.getId());
-        if (order.getSide() == Order.Side.BUY) {
+        if (order.getSide() == Side.BUY) {
             buyOrders.remove(order); // O(n)
         } else {
             sellOrders.remove(order); // O(n)

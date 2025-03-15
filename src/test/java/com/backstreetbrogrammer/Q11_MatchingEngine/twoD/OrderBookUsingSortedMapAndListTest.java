@@ -1,5 +1,8 @@
-package com.backstreetbrogrammer.Q11_MatchingEngine;
+package com.backstreetbrogrammer.Q11_MatchingEngine.twoD;
 
+import com.backstreetbrogrammer.Q11_MatchingEngine.Order;
+import com.backstreetbrogrammer.Q11_MatchingEngine.OrderBookI;
+import com.backstreetbrogrammer.Q11_MatchingEngine.Side;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MatchingEngineUsing1DPriorityQueueTest {
-    private final OrderBookI orderBook = new OrderBookUsingPQ();
+public class OrderBookUsingSortedMapAndListTest {
+    private final OrderBookI orderBook = new OrderBookUsingSortedMapAndList();
     private int i = 0;
 
     private static void delay() {
@@ -22,22 +25,22 @@ public class MatchingEngineUsing1DPriorityQueueTest {
 
     @BeforeEach
     void setUp() {
-        orderBook.addOrder(new Order(++i, Order.Side.SELL, 20.30, 100));
+        orderBook.addOrder(new Order(++i, Side.SELL, 20.30, 100));
         delay();
 
-        orderBook.addOrder(new Order(++i, Order.Side.SELL, 20.25, 100));
+        orderBook.addOrder(new Order(++i, Side.SELL, 20.25, 100));
         delay();
 
-        orderBook.addOrder(new Order(++i, Order.Side.SELL, 20.30, 200));
+        orderBook.addOrder(new Order(++i, Side.SELL, 20.30, 200));
         delay();
 
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.15, 100));
+        orderBook.addOrder(new Order(++i, Side.BUY, 20.15, 100));
         delay();
 
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.20, 200));
+        orderBook.addOrder(new Order(++i, Side.BUY, 20.20, 200));
         delay();
 
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.15, 200));
+        orderBook.addOrder(new Order(++i, Side.BUY, 20.15, 200));
         delay();
 
         System.out.println("Current Order Book:");
@@ -47,7 +50,7 @@ public class MatchingEngineUsing1DPriorityQueueTest {
     @Test
     void testOrderMatching() {
         System.out.println("\n### Sending BUY order 250@20.35");
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 20.35, 250));
+        orderBook.addOrder(new Order(++i, Side.BUY, 20.35, 250));
         // this will trigger matching and generate trades
 
         System.out.println("\n### Order book after matching:");
@@ -59,7 +62,7 @@ public class MatchingEngineUsing1DPriorityQueueTest {
         assertTrue(orderCache.containsKey(3));
 
         final Order partialFilledSellOrder = orderCache.get(3);
-        assertEquals(Order.Side.SELL, partialFilledSellOrder.getSide());
+        assertEquals(Side.SELL, partialFilledSellOrder.getSide());
         assertEquals(150, partialFilledSellOrder.getQuantity());
         assertEquals(20.3, partialFilledSellOrder.getPrice());
     }
@@ -76,7 +79,7 @@ public class MatchingEngineUsing1DPriorityQueueTest {
     @Test
     void testOrderCancel() {
         System.out.println("\n### Sending BUY order 200@10");
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 10, 200));
+        orderBook.addOrder(new Order(++i, Side.BUY, 10, 200));
 
         System.out.println("\n### Order book before cancel:");
         orderBook.printOrderBook();
@@ -96,7 +99,7 @@ public class MatchingEngineUsing1DPriorityQueueTest {
     @Test
     void testOrderAmendQty() {
         System.out.println("\n### Sending BUY order 200@10");
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 10, 200));
+        orderBook.addOrder(new Order(++i, Side.BUY, 10, 200));
 
         System.out.println("\n### Order book before amendment:");
         orderBook.printOrderBook();
@@ -117,7 +120,7 @@ public class MatchingEngineUsing1DPriorityQueueTest {
     @Test
     void testOrderAmendPrice() {
         System.out.println("\n### Sending BUY order 200@10");
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 10, 200));
+        orderBook.addOrder(new Order(++i, Side.BUY, 10, 200));
 
         System.out.println("\n### Order book before amendment:");
         orderBook.printOrderBook();
@@ -138,7 +141,7 @@ public class MatchingEngineUsing1DPriorityQueueTest {
     @Test
     void testOrderAmendQtyAndPrice() {
         System.out.println("\n### Sending BUY order 200@10");
-        orderBook.addOrder(new Order(++i, Order.Side.BUY, 10, 200));
+        orderBook.addOrder(new Order(++i, Side.BUY, 10, 200));
 
         System.out.println("\n### Order book before amendment:");
         orderBook.printOrderBook();

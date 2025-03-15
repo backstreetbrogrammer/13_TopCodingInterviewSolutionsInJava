@@ -606,7 +606,7 @@ Please note that if the order **price** is changed, the order priority will also
     d) continue a)
 ```
 
-**_Approach 1: Using LinkedList_**
+**_Approach 1: Using 1D LinkedList_**
 
 [LinkedList](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html)
 
@@ -624,7 +624,7 @@ However, sorting will use the worst-time complexity of `O(n*logn)` making the so
 - [59 - Order matching engine algorithm](https://youtu.be/ZboDniiFDpc)
 - [60 - Order matching engine using LinkedList](https://youtu.be/YnWzKrCQMqA)
 
-**_Approach 2: Using PriorityQueue_**
+**_Approach 2: Using 1D PriorityQueue_**
 
 ![MinMaxHeap](MinMaxHeap.PNG)
 
@@ -649,6 +649,10 @@ Comparing the performance, here is what we have:
 |---------------------|------------|------------------|--------|------------|------------|----------------|    
 | Linked List (1D)    | O(n*log n) | O(1) to O(n)     | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
 | Priority Queue (1D) | O(log n)   | O(log n) to O(n) | O(n)   | O(n)       | O(n)       | O(n)           |
+
+**_Approach 3: Using 2D - Price Levels as SortedMap and each level as PriorityQueue_**
+
+[NavigableMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html)
 
 ---
 
