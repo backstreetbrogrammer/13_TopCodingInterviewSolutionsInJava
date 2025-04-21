@@ -10,6 +10,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+
+/**
+ * OrderBook class to manage buy and sell orders using a priority queue.
+ *
+ * <p>Time complexity of various Priority Queue methods:</p>
+ * <ul>
+ *   <li>Enqueuing and dequeuing methods (offer, poll, remove, and add): O(log n)</li>
+ *   <li>Remove(Object) and contains(Object) methods: O(n)</li>
+ *   <li>Retrieval methods (peek, element, and size): O(1)</li>
+ * </ul>
+ */
 public class OrderBookUsingPQ implements OrderBookI {
     private final PriorityQueue<Order> buyOrders = new PriorityQueue<>(Comparator.comparingDouble(Order::getPrice)
                                                                                  .reversed()
@@ -31,10 +42,16 @@ public class OrderBookUsingPQ implements OrderBookI {
             throw new IllegalArgumentException("Order is null or already exists");
         }
 
-        addOrderAndMatch(order);
+        // Try to match the order first
+        matchOrders(order);
+
+        // If the order is not fully filled, add it to the order book
+        if (order.getQuantity() > 0) {
+            addOrderToOrderBook(order);
+        }
     }
 
-    private void addOrderAndMatch(final Order order) {
+    private void addOrderToOrderBook(final Order order) {
         // Add the order
         orderCache.put(order.getId(), order);
 
@@ -43,35 +60,36 @@ public class OrderBookUsingPQ implements OrderBookI {
         } else {
             sellOrders.add(order); // O(log n)
         }
+    }
 
-        // Check for match
-        matchOrders();
+    private void matchOrders(final Order order) {
+        final PriorityQueue<Order> oppositeOrders = (order.getSide() == Side.BUY) ? sellOrders : buyOrders;
+
+        while ((order.getQuantity() > 0)
+                && !oppositeOrders.isEmpty()
+                && isPriceMatch(order, oppositeOrders.peek())) {
+            System.out.printf("Aggressive %s order, matching with %s orders%n",
+                              order.getSide() == Side.BUY ? "buy" : "sell",
+                              order.getSide() == Side.BUY ? "sell" : "buy");
+
+            final Order oppositeOrder = oppositeOrders.peek(); // O(1)
+            final int fillQuantity = Math.min(order.getQuantity(), oppositeOrder.getQuantity());
+
+            System.out.printf("Matched Order: %d @ %.2f%n", fillQuantity, oppositeOrder.getPrice());
+
+            order.setQuantity(order.getQuantity() - fillQuantity);
+            oppositeOrder.setQuantity(oppositeOrder.getQuantity() - fillQuantity);
+
+            if (oppositeOrder.getQuantity() == 0) {
+                oppositeOrders.poll(); // O(log n)
+            }
+        }
     }
 
 
-    private void matchOrders() {
-        // Time complexity for heap => peek() and poll(): O(1)
-        while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
-                buyOrders.peek().getPrice() >= sellOrders.peek().getPrice()) {
-            final Order buyOrder = buyOrders.poll(); // O(1)
-            final Order sellOrder = sellOrders.poll(); // O(1)
-
-            final int buyQty = buyOrder.getQuantity();
-            final int sellQty = sellOrder.getQuantity();
-
-            final int fillQty = Math.min(buyQty, sellQty);
-            buyOrder.setQuantity(buyQty - fillQty);
-            sellOrder.setQuantity(sellQty - fillQty);
-
-            System.out.println("Matched Order: " + fillQty + " @ " + sellOrder.getPrice());
-
-            if (buyOrder.getQuantity() > 0) {
-                buyOrders.add(buyOrder); // O(log n)
-            }
-            if (sellOrder.getQuantity() > 0) {
-                sellOrders.add(sellOrder); // O(log n)
-            }
-        }
+    private boolean isPriceMatch(final Order order, final Order oppositeOrder) {
+        return (order.getSide() == Side.BUY && order.getPrice() >= oppositeOrder.getPrice())
+                || (order.getSide() == Side.SELL && order.getPrice() <= oppositeOrder.getPrice());
     }
 
     @Override
@@ -159,7 +177,7 @@ public class OrderBookUsingPQ implements OrderBookI {
 
     private void removeAndAddOrder(final Order order) {
         removeOrder(order);
-        addOrderAndMatch(order);
+        addOrder(order);
     }
 
     private void removeOrder(final Order order) {

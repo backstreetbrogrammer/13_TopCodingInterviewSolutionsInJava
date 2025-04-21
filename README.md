@@ -589,6 +589,8 @@ Please note that if the order **price** is changed, the order priority will also
 
 ### Solution: Matching Engine Algorithm
 
+**_Brute Force approach_**
+
 ```
 1. Maintain 2 data-structures DS (array / list / queue) for BUY and SELL orders
 
@@ -604,6 +606,28 @@ Please note that if the order **price** is changed, the order priority will also
     c) deduct that matched qty from both the orders
     c) after matching, if the order qty becomes 0 => remove that order from the DS
     d) continue a)
+```
+
+**_Optimised Matching Algorithm_**
+
+```
+1. Maintain 2 data-structures DS (array / list / queue) for BUY and SELL orders
+
+2. When a new order arrives, check if the order can be matched with the opposite side:
+    a) if the order is BUY, check if the head of the SELL orders DS has price <= BUY price
+    b) if the order is SELL, check if the head of the BUY orders DS has price >= SELL price
+    c) if yes, match, otherwise, add the order to BUY or SELL orders DS based on the SIDE of the order
+
+3. Match the orders:
+    a) if the head of the orders DS has BUY price >= SELL price, match otherwise don't match and exit from the loop
+    b) while matching, take the minimum order qty from BUY order and SELL order and generate trades using that qty 
+    c) deduct that matched qty from both the orders
+    c) after matching, if the order qty becomes 0 => remove that order from the DS
+    d) continue a)
+
+4. Add the unfilled order to the DS and sort the orders DS:
+    a) Sort the BUY orders DS in descending price order => highest priced order is at the head or index 0
+    b) Sort the SELL orders DS in ascending price order => lowest priced order is at the head or index 0
 ```
 
 **_Approach 1: Using 1D LinkedList_**
@@ -650,9 +674,20 @@ Comparing the performance, here is what we have:
 | Linked List (1D)    | O(n*log n) | O(1) to O(n)     | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
 | Priority Queue (1D) | O(log n)   | O(log n) to O(n) | O(n)   | O(n)       | O(n)       | O(n)           |
 
-**_Approach 3: Using 2D - Price Levels as SortedMap and each level as PriorityQueue_**
+**_Limitations using 1D data structure:_**
 
-[NavigableMap](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/NavigableMap.html)
+Orders with the **_same_** price will be placed at different levels in the data structure. This makes it difficult
+to display the market data for the order book which are the same price levels.
+
+**_Final Approach: Using 2D - Price Levels as PriorityQueue and each level as Map with Key as Price and values as
+LinkedList_**
+
+We can improve the overall design by using `PriorityQueue` for the price levels maintaining price priority.
+
+Once the best price is found, we can use a `HashMap` with key as price level and values as `LinkedList` of orders at 
+that price level.
+
+The **_head_** of the `LinkedList` will contain the best time priority orders and will be matched first.
 
 ---
 

@@ -25,10 +25,16 @@ public class OrderBookUsingList implements OrderBookI {
             throw new IllegalArgumentException("Order is null or already exists");
         }
 
-        addOrderAndMatch(order);
+        // Try to match the order first
+        matchOrders(order);
+
+        // If the order is not fully filled, add it to the order book
+        if (order.getQuantity() > 0) {
+            addOrderToOrderBook(order);
+        }
     }
 
-    private void addOrderAndMatch(final Order order) {
+    private void addOrderToOrderBook(final Order order) {
         // Add the order
         orderCache.put(order.getId(), order);
         if (order.getSide() == Side.BUY) {
@@ -41,29 +47,35 @@ public class OrderBookUsingList implements OrderBookI {
             sellOrders.sort(Comparator.comparingDouble(Order::getPrice)
                                       .thenComparing(Order::getEntryTime)); // O(n * logn)
         }
-
-        // Check for match
-        matchOrders();
     }
 
-    private void matchOrders() {
-        while (!buyOrders.isEmpty() && !sellOrders.isEmpty() &&
-                buyOrders.getFirst().getPrice() >= sellOrders.getFirst().getPrice()) {
-            final Order buyOrder = buyOrders.getFirst();   // O(1)
-            final Order sellOrder = sellOrders.getFirst(); // O(1)
+    private void matchOrders(final Order order) {
+        final LinkedList<Order> oppositeOrders = (order.getSide() == Side.BUY) ? sellOrders : buyOrders;
 
-            final int buyOrderQuantity = buyOrder.getQuantity();
-            final int sellOrderQuantity = sellOrder.getQuantity();
-            final int fillQuantity = Math.min(buyOrderQuantity, sellOrderQuantity);
+        while ((order.getQuantity() > 0)
+                && !oppositeOrders.isEmpty()
+                && isPriceMatch(order, oppositeOrders.getFirst())) {
+            System.out.printf("Aggressive %s order, matching with %s orders%n",
+                              order.getSide() == Side.BUY ? "buy" : "sell",
+                              order.getSide() == Side.BUY ? "sell" : "buy");
 
-            System.out.println("Matched Order: " + fillQuantity + " @ " + sellOrder.getPrice());
+            final Order oppositeOrder = oppositeOrders.getFirst(); // O(1)
+            final int fillQuantity = Math.min(order.getQuantity(), oppositeOrder.getQuantity());
 
-            buyOrder.setQuantity(buyOrderQuantity - fillQuantity);
-            sellOrder.setQuantity(sellOrderQuantity - fillQuantity);
+            System.out.printf("Matched Order: %d @ %.2f%n", fillQuantity, oppositeOrder.getPrice());
 
-            if (buyOrder.getQuantity() == 0) buyOrders.removeFirst();   // O(1)
-            if (sellOrder.getQuantity() == 0) sellOrders.removeFirst(); // O(1)
+            order.setQuantity(order.getQuantity() - fillQuantity);
+            oppositeOrder.setQuantity(oppositeOrder.getQuantity() - fillQuantity);
+
+            if (oppositeOrder.getQuantity() == 0) {
+                oppositeOrders.removeFirst(); // O(1)
+            }
         }
+    }
+
+    private boolean isPriceMatch(final Order order, final Order oppositeOrder) {
+        return (order.getSide() == Side.BUY && order.getPrice() >= oppositeOrder.getPrice())
+                || (order.getSide() == Side.SELL && order.getPrice() <= oppositeOrder.getPrice());
     }
 
     @Override
@@ -159,7 +171,7 @@ public class OrderBookUsingList implements OrderBookI {
 
     private void removeAndAddOrder(final Order order) {
         removeOrder(order);
-        addOrderAndMatch(order);
+        addOrder(order);
     }
 
     private void removeOrder(final Order order) {

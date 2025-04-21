@@ -1,5 +1,6 @@
 package com.backstreetbrogrammer;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class PrintUtils {
@@ -22,4 +23,11 @@ public class PrintUtils {
         }
         System.out.println();
     }
+
+    public static String withLargeIntegers(final double value) {
+        final DecimalFormat df = new DecimalFormat("###,###,###");
+        return df.format(value);
+    }
+
+    // withLargeIntegers(123456789) = 123,456,789
 }
