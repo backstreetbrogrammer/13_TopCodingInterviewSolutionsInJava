@@ -642,12 +642,6 @@ However, sorting will use the worst-time complexity of `O(n*logn)` making the so
 |------------------|------------|--------------|--------|------------|------------|----------------|    
 | Linked List (1D) | O(n*log n) | O(1) to O(n) | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
 
-### Youtube
-
-- [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
-- [59 - Order matching engine algorithm](https://youtu.be/ZboDniiFDpc)
-- [60 - Order matching engine using LinkedList](https://youtu.be/YnWzKrCQMqA)
-
 **_Approach 2: Using 1D PriorityQueue_**
 
 ![MinMaxHeap](MinMaxHeap.PNG)
@@ -684,10 +678,17 @@ LinkedList_**
 
 We can improve the overall design by using `PriorityQueue` for the price levels maintaining price priority.
 
-Once the best price is found, we can use a `HashMap` with key as price level and values as `LinkedList` of orders at 
+Once the best price is found, we can use a `HashMap` with key as price level and values as `LinkedList` of orders at
 that price level.
 
 The **_head_** of the `LinkedList` will contain the best time priority orders and will be matched first.
+
+### Youtube
+
+- [58 - Design order matching engine](https://youtu.be/xORX6okUioM)
+- [59 - Order matching engine algorithm](https://youtu.be/ZboDniiFDpc)
+- [60 - Order matching engine using LinkedList](https://youtu.be/YnWzKrCQMqA)
+- [61 - Order matching engine optimised](https://youtu.be/fCP88sHy8iA)
 
 ---
 
