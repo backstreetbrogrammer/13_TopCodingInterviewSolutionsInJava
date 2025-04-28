@@ -176,12 +176,12 @@ public class OrderBookUsingPQ implements OrderBookI {
     }
 
     private void removeAndAddOrder(final Order order) {
-        removeOrder(order);
-        addOrder(order);
+        removeOrder(order); // O(n)
+        addOrder(order); // O(log n)
     }
 
     private void removeOrder(final Order order) {
-        orderCache.remove(order.getId());
+        orderCache.remove(order.getId()); // O(1)
         if (order.getSide() == Side.BUY) {
             buyOrders.remove(order); // O(n)
         } else {

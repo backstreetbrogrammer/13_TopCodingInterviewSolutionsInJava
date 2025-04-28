@@ -632,15 +632,17 @@ Please note that if the order **price** is changed, the order priority will also
 
 **_Approach 1: Using 1D LinkedList_**
 
+![DoublyLinkedList](DoublyLinkedList.PNG)
+
 [LinkedList](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html)
 
 Using `LinkedList`, we can add / remove at head and tail in constant `O(1)` time.
 
 However, sorting will use the worst-time complexity of `O(n*logn)` making the solution correct but poor in performance.
 
-| Data Structure   | Add        | Match        | Cancel | Amend Qty  | Amend Px   | Amend Qty & Px |    
-|------------------|------------|--------------|--------|------------|------------|----------------|    
-| Linked List (1D) | O(n*log n) | O(1) to O(n) | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
+| Data Structure   | Add        | Match | Cancel | Amend Qty  | Amend Px   | Amend Qty & Px |    
+|------------------|------------|-------|--------|------------|------------|----------------|    
+| Linked List (1D) | O(n*log n) | O(n)  | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
 
 **_Approach 2: Using 1D PriorityQueue_**
 
@@ -663,10 +665,10 @@ Using Priority Queue helps to reduce the adding and sorting of the orders from `
 
 Comparing the performance, here is what we have:
 
-| Data Structure      | Add        | Match            | Cancel | Amend Qty  | Amend Px   | Amend Qty & Px |    
-|---------------------|------------|------------------|--------|------------|------------|----------------|    
-| Linked List (1D)    | O(n*log n) | O(1) to O(n)     | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
-| Priority Queue (1D) | O(log n)   | O(log n) to O(n) | O(n)   | O(n)       | O(n)       | O(n)           |
+| Data Structure      | Add        | Match      | Cancel | Amend Qty  | Amend Px   | Amend Qty & Px |    
+|---------------------|------------|------------|--------|------------|------------|----------------|    
+| Linked List (1D)    | O(n*log n) | O(n)       | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
+| Priority Queue (1D) | O(log n)   | O(n*log n) | O(n)   | O(n)       | O(n)       | O(n)           |
 
 **_Limitations using 1D data structure:_**
 

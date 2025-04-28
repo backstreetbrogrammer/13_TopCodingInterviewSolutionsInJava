@@ -170,12 +170,12 @@ public class OrderBookUsingList implements OrderBookI {
     }
 
     private void removeAndAddOrder(final Order order) {
-        removeOrder(order);
-        addOrder(order);
+        removeOrder(order); // O(n)
+        addOrder(order); // O(n * logn)
     }
 
     private void removeOrder(final Order order) {
-        orderCache.remove(order.getId());
+        orderCache.remove(order.getId()); // O(1)
         if (order.getSide() == Side.BUY) {
             buyOrders.remove(order); // O(n)
         } else {
