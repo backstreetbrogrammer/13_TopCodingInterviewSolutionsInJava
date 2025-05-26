@@ -694,6 +694,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 - [62 - Level 1 and Level 3 Market Data using LinkedList](https://youtu.be/irj5NZ3lSR0)
 - [63 - Order Cancellation using LinkedList](https://youtu.be/OXQA6Blz7C4)
 - [64 - Order Amendment of Quantity using LinkedList](https://youtu.be/IEixdNN08sg)
+- [65 - Order Amendment of Price using LinkedList](https://youtu.be/NN-GNMZd6NY)
 
 ---
 
