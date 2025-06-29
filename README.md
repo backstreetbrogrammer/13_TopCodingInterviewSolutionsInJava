@@ -696,6 +696,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 - [64 - Order Amendment of Quantity using LinkedList](https://youtu.be/IEixdNN08sg)
 - [65 - Order Amendment of Price using LinkedList](https://youtu.be/NN-GNMZd6NY)
 - [66 - Order Amendment of Quantity and Price using LinkedList](https://youtu.be/QgeIPQXZyvg)
+- [67 - Order Book Matching Algorithm using PriorityQueue](https://youtu.be/XHqGghIp2WQ)
 
 ---
 
