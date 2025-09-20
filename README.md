@@ -670,13 +670,32 @@ Comparing the performance, here is what we have:
 | Linked List (1D)    | O(n*log n) | O(n)       | O(n)   | O(n*log n) | O(n*log n) | O(n*log n)     |
 | Priority Queue (1D) | O(log n)   | O(n*log n) | O(n)   | O(n)       | O(n)       | O(n)           |
 
+**Key points:**
+
+- **_Order Matching_** using **LinkedList** `O(n)` is better than using **PriorityQueue** `O(n*log n)`
+- **_Adding new order_** using **PriorityQueue** `O(log n)` is better than using **LinkedList** `O(n*log n)`
+- **_Cancellation_** using both **LinkedList** and **PriorityQueue** is `O(n)`
+- **_Amendment_** using **PriorityQueue** `O(n)` is better than using **LinkedList** `O(n*log n)`
+
 **_Limitations using 1D data structure:_**
 
-Orders with the **_same_** price will be placed at different levels in the data structure. This makes it difficult
-to display the market data for the order book which are the same price levels.
+Orders with the **_same_** price are placed at different levels in the data structure.
+
+This makes it difficult to display the market data for the order book which are the same price levels.
+
+**For example:**
+
+If I want to know how many orders are there at price level `20.30` in the above order book, I will have to traverse
+the whole data structure to find out.
+
+In the real world exchanges, orders are **grouped** by price levels.
+
+As there can me hundreds of orders at the same price level, we need to maintain a 2D data structure.
 
 **_Final Approach: Using 2D - Price Levels as PriorityQueue and each level as Map with Key as Price and values as
 LinkedList_**
+
+![2D_OrderBook](2D_OrderBook.PNG)
 
 We can improve the overall design by using `PriorityQueue` for the price levels maintaining price priority.
 
