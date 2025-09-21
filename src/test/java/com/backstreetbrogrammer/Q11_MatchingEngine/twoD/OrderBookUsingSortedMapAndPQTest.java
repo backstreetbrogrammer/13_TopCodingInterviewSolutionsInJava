@@ -18,7 +18,7 @@ public class OrderBookUsingSortedMapAndPQTest {
     private static void delay() {
         try {
             TimeUnit.MILLISECONDS.sleep(1L);
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

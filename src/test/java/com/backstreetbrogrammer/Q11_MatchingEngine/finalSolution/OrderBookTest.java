@@ -1,4 +1,4 @@
-package com.backstreetbrogrammer.Q11_MatchingEngine.oneD;
+package com.backstreetbrogrammer.Q11_MatchingEngine.finalSolution;
 
 import com.backstreetbrogrammer.Q11_MatchingEngine.Order;
 import com.backstreetbrogrammer.Q11_MatchingEngine.OrderBookI;
@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OrderBookUsingListTest {
-    private final OrderBookI orderBook = new OrderBookUsingList();
+public class OrderBookTest {
+    private final OrderBookI orderBook = new OrderBook();
     private int i = 0;
 
     private static void delay() {
