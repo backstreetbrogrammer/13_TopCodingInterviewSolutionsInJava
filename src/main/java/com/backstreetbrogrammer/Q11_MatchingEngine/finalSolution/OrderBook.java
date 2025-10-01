@@ -71,7 +71,6 @@ public class OrderBook implements OrderBookI {
         final PriorityQueue<Double> oppositeSidePriceLevel =
                 (order.getSide() == Side.BUY) ? sellPriceLevels : buyPriceLevels;
 
-
         while (isPriceMatch(order, oppositeSidePriceLevel)) {
             final double matchPrice = oppositeSidePriceLevel.peek();
             final OrderList oppositeOrders = ordersAtPrice.get(matchPrice);
@@ -201,10 +200,10 @@ public class OrderBook implements OrderBookI {
 
     private void removeOrder(final PriorityQueue<Double> priceLevels, final Order order) {
         final double price = order.getPrice();
-        final OrderList ordersAtPriceLevel = ordersAtPrice.get(price);
+        final OrderList ordersAtPriceLevel = ordersAtPrice.get(price); // O(1)
 
         if (ordersAtPriceLevel != null) {
-            ordersAtPriceLevel.getOrders().remove(order); // Remove the order from the list
+            ordersAtPriceLevel.removeOrder(order); // Remove the order from the list
             if (ordersAtPriceLevel.isEmpty()) {
                 ordersAtPrice.remove(price); // Remove the price level if no orders remain
                 priceLevels.remove(price); // Remove the price from the priority queue

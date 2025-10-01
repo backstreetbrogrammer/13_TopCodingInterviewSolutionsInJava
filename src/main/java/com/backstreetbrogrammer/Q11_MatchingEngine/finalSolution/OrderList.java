@@ -63,6 +63,55 @@ public class OrderList {
         return order;
     }
 
+    public void removeOrder(final Order order) {
+        if (order == null || head == null) {
+            return; // No order to remove
+        }
+
+        Node current = head;
+        while (current != null) {
+            if (current.order.equals(order)) {
+                removeNode(current); // Reuse the removeNode method
+                return;
+            }
+            current = current.next;
+        }
+    }
+
+    private void removeNode(final Node node) {
+        if (node == null) {
+            return;
+        }
+
+        // Update the total volume and size
+        totalVolume -= node.order.getQuantity();
+        size--;
+
+        // If the node is the head
+        if (node == head) {
+            head = head.next;
+            if (head != null) {
+                head.prev = null;
+            } else {
+                tail = null; // List becomes empty
+            }
+        }
+        // If the node is the tail
+        else if (node == tail) {
+            tail = tail.prev;
+            if (tail != null) {
+                tail.next = null;
+            } else {
+                head = null; // List becomes empty
+            }
+        }
+        // If the node is in the middle
+        else {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+        }
+    }
+
     public Order peekHead() {
         return (head != null) ? head.order : null;
     }
