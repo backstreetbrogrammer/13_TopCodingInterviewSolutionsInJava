@@ -722,6 +722,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 - [71 - Order Cancellation using PriorityQueue](https://youtu.be/ViBq1b_09yc)
 - [72 - Order Amendment using PriorityQueue](https://youtu.be/f9HObKK6mn8)
 - [73 - Review of Matching Engine design using 1D LinkedList and PriorityQueue](https://youtu.be/op5Qug1apU8)
+- [74 - Final Matching Engine design using PriorityQueue and Doubly Linked List](https://youtu.be/ZjuoQAOJfbc)
 
 ---
 
