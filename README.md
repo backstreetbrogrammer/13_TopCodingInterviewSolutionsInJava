@@ -724,6 +724,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 - [73 - Review of Matching Engine design using 1D LinkedList and PriorityQueue](https://youtu.be/op5Qug1apU8)
 - [74 - Final Matching Engine design using PriorityQueue and Doubly Linked List](https://youtu.be/ZjuoQAOJfbc)
 - [75 - Data Structure with Java implementation for Matching Engine design](https://youtu.be/OleVuIYoVbE)
+- [76 - Add a new order to Order Book](https://youtu.be/9xteH7LXfJ8)
 
 ---
 
