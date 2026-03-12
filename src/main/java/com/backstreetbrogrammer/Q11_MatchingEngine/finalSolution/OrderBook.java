@@ -62,7 +62,7 @@ public class OrderBook implements OrderBookI {
         if (oppositeSidePriceLevel == null || oppositeSidePriceLevel.peek() == null) {
             return false; // No price level to match
         }
-        final double topPrice = oppositeSidePriceLevel.peek(); // Safe unboxing
+        final double topPrice = oppositeSidePriceLevel.peek(); // O(1)
         return (order.getSide() == Side.BUY && order.getPrice() >= topPrice)
                 || (order.getSide() == Side.SELL && order.getPrice() <= topPrice);
     }
@@ -72,15 +72,16 @@ public class OrderBook implements OrderBookI {
         final PriorityQueue<Double> oppositeSidePriceLevel =
                 (order.getSide() == Side.BUY) ? sellPriceLevels : buyPriceLevels;
 
-        while (isPriceMatch(order, oppositeSidePriceLevel)) {
-            final double matchPrice = oppositeSidePriceLevel.peek();
-            final OrderList oppositeOrders = ordersAtPrice.get(matchPrice);
+        while (isPriceMatch(order, oppositeSidePriceLevel)) { // O(n)
+            final double matchPrice = oppositeSidePriceLevel.peek(); // O(1)
+            final OrderList oppositeOrders = ordersAtPrice.get(matchPrice); // O(1)
             if (oppositeOrders == null || oppositeOrders.isEmpty()) {
                 oppositeSidePriceLevel.poll(); // Remove empty price level
                 continue;
             }
 
-            final Order oppositeOrder = oppositeOrders.getHead();
+            // O(1)
+            final Order oppositeOrder = oppositeOrders.getHead(); // best time priority at that price level
             final int fillQty = Math.min(order.getQuantity(), oppositeOrder.getQuantity());
             order.setQuantity(order.getQuantity() - fillQty);
             oppositeOrder.setQuantity(oppositeOrder.getQuantity() - fillQty);
@@ -88,18 +89,18 @@ public class OrderBook implements OrderBookI {
             System.out.printf("Matched Order: %d @ %.2f%n", fillQty, matchPrice);
 
             if (oppositeOrder.getQuantity() > 0) {
-                oppositeOrders.addHead(oppositeOrder); // Re-add to the front
+                oppositeOrders.addHead(oppositeOrder); // Re-add to the front - O(1)
             } else {
-                orderCache.remove(oppositeOrder.getId()); // Remove fully filled order from cache
+                orderCache.remove(oppositeOrder.getId()); // Remove fully filled order from cache - O(1)
             }
 
             if (oppositeOrders.isEmpty()) {
-                ordersAtPrice.remove(matchPrice);
-                oppositeSidePriceLevel.poll(); // Remove empty price level
+                ordersAtPrice.remove(matchPrice); // O(1)
+                oppositeSidePriceLevel.poll(); // Remove empty price level - // O(log n)
             }
 
             if (order.getQuantity() == 0) {
-                orderCache.remove(order.getId()); // Remove fully filled order from cache
+                orderCache.remove(order.getId()); // Remove fully filled order from cache - O(1)
                 break; // Order fully filled
             }
         }
