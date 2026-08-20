@@ -14,13 +14,15 @@
 3. [Deadlock](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-3-deadlock)
     - demonstrate deadlock issue
     - resolve deadlock issue
-4. [Implement a `Stack` in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-4-stack)
+4. [Implement a
+   `Stack` in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-4-stack)
     - without using Java collections
     - using Java collections
     - bounded concurrent stack using locks
     - concurrent stack using CAS (Atomic classes)
 5. [Odd-Even printer using multithreading](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-4-stack)
-6. [Implement UNIX `tail` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-6-implement-unix-tail-command-in-java)
+6. [Implement UNIX
+   `tail` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-6-implement-unix-tail-command-in-java)
     - tail on a static file
     - tail on a running file (appended in real-time)
 7. [False sharing](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-7-false-sharing)
@@ -32,10 +34,12 @@
     - Read to Write Reentrant
     - Write to Read Reentrant
     - Fully Reentrant
-9. [Implement UNIX `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-9-implement-unix-find-command-in-java)
+9. [Implement UNIX
+   `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-9-implement-unix-find-command-in-java)
 10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-10-design-lru-cache)
 11. [Design order matching engine](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-11-design-order-matching-engine)
-12. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-12-write-a-fix-log-parser)
+12. [Only 2 AI Tools - Good enough for Java Developers](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-12-only-2-ai-tools-good-enough-for-java-developers)
+13. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-13-write-a-fix-log-parser)
 
 ### Youtube
 
@@ -112,8 +116,8 @@ size `k` of the read packets.
 
 - [07 - Random Sampling - PROBLEM STATEMENT](https://youtu.be/SjEHO2qWy7g)
 - [08 - Random Sampling - SOLUTION - Code Demo 1](https://youtu.be/sFlR7Dnzp6g)
-- [09 - Random Sampling - SOLUTION - Using Collections.shuffle() method](https://youtu.be/aoAeKm4_Eks)
-- [10 - Random Sampling - SOLUTION - Using Collections.swap() method](https://youtu.be/jkhO8uCBs1U)
+- [09 - Random Sampling - SOLUTION - Using Collections.shuffle () method](https://youtu.be/aoAeKm4_Eks)
+- [10 - Random Sampling - SOLUTION - Using Collections.swap () method](https://youtu.be/jkhO8uCBs1U)
 - [11 - Random Online Sampling - SOLUTION - Code Demo 1](https://youtu.be/Z_W7k-bYbqI)
 - [12 - Random Online Sampling - SOLUTION - Code Demo 2](https://youtu.be/fvZr3PASqnI)
 - [13 - Random Online Sampling - SOLUTION - Code Demo 3](https://youtu.be/728Pb3RbdAI)
@@ -455,8 +459,8 @@ Design an LRU cache which uses classic data structures and is also thread safe.
 
 ![StockMarket](StockMarket.PNG)
 
-A stock exchange is an exchange where stockbrokers and traders can buy and sell securities, such as shares of
-stock, bonds and other financial instruments.
+A stock exchange is an exchange where stockbrokers and traders can buy and sell securities, such as shares of stock,
+bonds and other financial instruments.
 
 The basic function of an exchange is to facilitate the **matching** of buyers and sellers efficiently.
 
@@ -499,12 +503,11 @@ Determines whether an Order is a **BUY** order or a **SELL** order. We will not 
 
 **_Order Type_**
 
-- **Market**: Buy or Sell a stock at whatever the best price is available at the opposite side to
-  guarantee that order is filled.
+- **Market**: Buy or Sell a stock at whatever the best price is available at the opposite side to guarantee that order
+  is filled.
 - **Limit**: A limit price is given with the order.
     - For **Buy**, it means that the stock should be bought **at or below** the limit price, otherwise wait (in the
-      order
-      book).
+      order book).
     - For **Sell**, it means that the stock should be bought at or above the limit price, otherwise wait (in the order
       book).
 
@@ -685,8 +688,8 @@ This makes it difficult to display the market data for the order book which are 
 
 **For example:**
 
-If I want to know how many orders are there at price level `20.30` in the above order book, I will have to traverse
-the whole data structure to find out.
+If I want to know how many orders are there at price level `20.30` in the above order book, I will have to traverse the
+whole data structure to find out.
 
 In the real world exchanges, orders are **grouped** by price levels.
 
@@ -727,6 +730,181 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 - [76 - Add a new order to Order Book](https://youtu.be/9xteH7LXfJ8)
 - [77 - Match orders](https://youtu.be/IN8QbsB1sq0)
 - [78 - Cancel order](https://youtu.be/grhkiHTOe20)
+
+---
+
+## Only 2 AI Tools - Good enough for Java Developers
+
+### 1. Github Copilot
+
+**Activate paid subscription on GitHub**
+
+- Go to the [GitHub Copilot Main Page](https://github.com/features/copilot) and sign in to GitHub account.
+- Follow the instructions to activate the paid subscription.
+- Choose a billing plan (Monthly or Yearly) for Copilot Individual
+
+**Install Github Copilot Plugin in IntelliJ**
+
+- Open IntelliJ IDEA and go to `File > Settings > Plugins`.
+- Search for "GitHub Copilot" and click `Install`.
+- Restart IntelliJ IDEA to activate the plugin.
+
+**Connect GitHub Copilot to GitHub account within IntelliJ IDEA**
+
+- Click the GitHub Copilot status icon in the bottom-right corner of the window.
+- Select **Login to GitHub**.
+- Copy the **Device Activation Code** from the popup dialog.
+- Click the link to open the authorization page on the [GitHub Activation Portal](https://github.com/login/device),
+  paste the code, and click **Authorize**.
+
+Once authorized, the Copilot status icon will turn active. We can immediately leverage its generative capabilities
+inside our Java files.
+
+### 2. Aider and DeepSeek
+
+Aider is written in Python and works best inside a Git repository.
+
+**Install Python**
+
+Firstly, we need to install Python from [Python's official website](https://www.python.org/downloads/).
+
+Verify:
+
+```bash
+python --version
+```
+
+**Install Aider using pip**
+
+Once Python is installed, we can install Aider using the following command:
+
+```bash
+python -m pip install aider-install && aider-install
+```
+
+Verify:
+
+```bash
+aider --version
+```
+
+**Create a DeepSeek API Key**
+
+- **Sign Up**: Go to [DeepSeek API Platform](https://platform.deepseek.com/sign_in) and create an account using email,
+  Google, or GitHub.
+- **Top Up (Required)**: Navigate to the `Top up` section. Add a small amount of credit (e.g., `$2` to `$5`
+  USD). The API acts like a prepaid SIM card and will not work if the balance is completely zero.
+- **Generate Key**: Click on API keys in the left sidebar menu. Click `Create new API key`, name it something like
+  `Aider-IntelliJ`, and copy the key immediately. **Note**: It will only be shown once for safety.
+
+Aider automatically detects DeepSeek API key if it is saved to system's environment variables.
+
+```
+Click on Windows Search -> Edit the system environment variables -> create a new `Environment Variable` with the name `DEEPSEEK_API_KEY` and paste API key as the value.
+```
+
+**Use Aider and DeepSeek for Java Development**
+
+Open **Git Bash** and move to the Java Project root:
+
+```bash
+cd /c/Users/rishi/Downloads/BuildWithTech/13_TopCodingInterviewSolutionsInJava
+```
+
+Export Deep Seek key explicitly:
+
+```bash
+export DEEPSEEK_API_KEY=your_api_key_here
+```
+
+Check which models are available:
+
+```bash
+curl https://api.deepseek.com/v1/models \
+     -H "Authorization: Bearer $DEEPSEEK_API_KEY"
+```
+
+For ex:
+
+2 models are available:
+
+- deepseek-v4-flash
+- deepseek-v4-pro
+
+We can use `deepseek-v4-flash` for light-weight refactoring tasks, but generally I prefer to use `deepseek-v4-pro`
+for heavy-weight **planning** tasks.
+
+As for smaller boilerplate code and refactoring, I already have **Github Copilot**.
+
+Check balance:
+
+```bash
+curl https://api.deepseek.com/v1/user/balance \
+     -H "Authorization: Bearer $DEEPSEEK_API_KEY"
+```
+
+- Enable Aider model
+
+```
+aider --model deepseek/deepseek-v4-flash
+
+OR
+
+aider --model deepseek/deepseek-v4-pro
+```
+
+- Useful Aider commands
+
+```
+  /help → Show all commands.
+  /models → List available models.
+  /add → Add context or files to the session.
+  /drop → Remove context or files from the session.
+  /diff → Show proposed code changes.
+  /undo → Undo last change.
+  /commit → Commit changes with a message.
+  /exit → Quit Aider.
+```
+
+- Use Aider for planning tasks
+
+Firstly, add the context of the project:
+
+```
+> /add src/**/*.java
+```
+
+If `README.md` and/or `CLAUDE.md` files are present, can add them to the context.
+
+```
+> /add README.md CLAUDE.md
+```
+
+On the prompt, we can just type in plain english
+
+```
+Refactor the order matching engine for lower latency.
+```  
+
+```
+Aider proposes diffs → we review.
+Accept changes → commit with /commit "Refactor engine for latency"
+```
+
+**Drop Files When Done:**
+
+If we finish refactoring a specific module and want to clear up space for a fresh task, use the `/drop` command to
+remove files from the current active attention window:
+
+```
+> /drop src/**/*.java
+```
+
+Exit from Aider:
+
+```
+> /exit
+```
 
 ---
 
