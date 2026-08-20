@@ -735,7 +735,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 
 ## Only 2 AI Tools - Good enough for Java Developers
 
-### 1. Github Copilot
+### 1. GitHub Copilot - for interactive, inline micro-tasks
 
 **Activate paid subscription on GitHub**
 
@@ -743,7 +743,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 - Follow the instructions to activate the paid subscription.
 - Choose a billing plan (Monthly or Yearly) for Copilot Individual
 
-**Install Github Copilot Plugin in IntelliJ**
+**Install GitHub Copilot Plugin in IntelliJ**
 
 - Open IntelliJ IDEA and go to `File > Settings > Plugins`.
 - Search for "GitHub Copilot" and click `Install`.
@@ -760,7 +760,7 @@ The **_head_** of the `LinkedList` will contain the best time priority orders an
 Once authorized, the Copilot status icon will turn active. We can immediately leverage its generative capabilities
 inside our Java files.
 
-### 2. Aider and DeepSeek
+### 2. Aider and DeepSeek - for planned, multi-file engineering tasks
 
 Aider is written in Python and works best inside a Git repository.
 
@@ -834,7 +834,7 @@ For ex:
 We can use `deepseek-v4-flash` for light-weight refactoring tasks, but generally I prefer to use `deepseek-v4-pro`
 for heavy-weight **planning** tasks.
 
-As for smaller boilerplate code and refactoring, I already have **Github Copilot**.
+As for smaller boilerplate code and refactoring, I already have **GitHub Copilot**.
 
 Check balance:
 
@@ -905,6 +905,14 @@ Exit from Aider:
 ```
 > /exit
 ```
+
+**Summary**
+
+Think of `Aider + DeepSeek` as our **Head Architect** — we give it the `README.md` and `CLAUDE.md` to map out and write
+the foundational structural changes.
+
+Think of `GitHub Copilot` as our **Pair Programmer** sitting right next to us — handling the quick documentation
+lookups, instant code completions, and micro-edits while we review the architecture.
 
 ---
 
