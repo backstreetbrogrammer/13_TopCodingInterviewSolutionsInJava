@@ -38,8 +38,8 @@
    `find` command in Java](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-9-implement-unix-find-command-in-java)
 10. [Design LRU cache](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-10-design-lru-cache)
 11. [Design order matching engine](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-11-design-order-matching-engine)
-12. [Only 2 AI Tools - Good enough for Java Developers](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-12-only-2-ai-tools-good-enough-for-java-developers)
-13. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-13-write-a-fix-log-parser)
+12. [Only 2 AI Tools - Good enough for Java Developers](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-12-only-2-ai-tools-good-enough-for-java-developers](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#only-2-ai-tools---good-enough-for-java-developers)
+13. [Write a FIX Log Parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-13-write-a-fix-log-parser](https://github.com/backstreetbrogrammer/13_TopCodingInterviewSolutionsInJava?tab=readme-ov-file#problem-12-write-a-fix-log-parser)
 
 ### Youtube
 
