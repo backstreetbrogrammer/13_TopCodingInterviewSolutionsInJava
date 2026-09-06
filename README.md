@@ -916,6 +916,46 @@ lookups, instant code completions, and micro-edits while we review the architect
 
 ---
 
+For reference, more professional prompt given to DeepSeek:
+
+Act as a Principal Frontend Engineer and UI/UX Expert. I want you to build a production-grade, highly polished, and
+responsive Web UI component/page using React (functional components, hooks) and Tailwind CSS.
+
+### Project Context
+
+- **Tech Stack:** React (latest), Tailwind CSS, Lucide React (for icons).
+- **Design System:** Clean, modern, accessible (WCAG AA compliant), and mobile-first. Use a cohesive color palette
+  (e.g., slate/indigo/emerald), smooth transitions (`transition-all duration-200`), and proper hover/focus states.
+- **Code Quality:** Write clean, modular, reusable components. Use semantic HTML tags. Ensure zero console errors, clean
+  state management, and proper prop-types or TypeScript-ready structure (vanilla JS/JSX unless specified).
+
+### Requirements for the UI
+
+1. **[Insert Feature/Page Name Here, e.g., A SaaS Dashboard / E-commerce Product Page / Login Screen]**
+2. **Key Sections/Components:**
+    - [List specific sections, e.g., Sidebar navigation, top header with user profile, main data table with sorting/pagination, interactive modal]
+3. **Interactivity & State:**
+    - Include working React `useState` or `useReducer` hooks for toggle states (e.g., mobile menu open/close, dark/light
+      mode toggle, modal visibility, active tabs).
+4. **Tailwind Best Practices:**
+    - Use Flexbox and CSS Grid for layouts.
+    - Ensure full responsiveness (`sm:`, `md:`, `lg:`, `xl:` breakpoints).
+    - Use arbitrary values sparingly; stick to the default Tailwind spacing and sizing scale.
+
+### Output Format
+
+- Provide the complete, production-ready code.
+- Split the code into logical components if it spans multiple files (e.g., `Sidebar.jsx`, `Header.jsx`, `Dashboard.jsx`,
+  and a main `App.jsx`).
+- Include dummy/mock data so the UI renders fully populated right away.
+- Do not truncate code; provide full implementations.
+
+### Youtube
+
+- [Only 2 AI Tools - Good enough for Java Developers](https://youtu.be/2kpDjyCtmt4)
+
+---
+
 ## Problem 12: Write a FIX Log Parser
 
 [FIX Protocol Primer](https://github.com/backstreetbrogrammer/55_FIX_Protocol_Study_Guide)
@@ -947,5 +987,4 @@ If we buy 100 stocks of Apple at 200 USD, then current position of Apple stocks 
 
 Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple stocks is = `20000 - (50*100) = 15000`
 
-
-
+---
