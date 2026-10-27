@@ -988,3 +988,34 @@ If we buy 100 stocks of Apple at 200 USD, then current position of Apple stocks 
 Now, if we sell 50 stocks of Apple at 100 USD, then current position of Apple stocks is = `20000 - (50*100) = 15000`
 
 ---
+
+## Problem 13: Garbage Collection Avoidance & Zero-Allocation Programming
+
+**_Why This Matters for Ultra Low Latency (ULL) & Trading Systems_**
+
+In standard enterprise Java applications, garbage collection (GC) pauses lasting `10ms` to `100ms+` are **acceptable**.
+
+In Ultra-Low Latency (ULL) trading systems, a `10ms` GC pause means missing market feeds, failing to honor an RFQ quote
+window, or getting adversely selected on stale quotes.
+
+Zero-allocation programming means writing **hot-path code** that allocates **zero objects on the heap**, keeping the GC
+completely dormant.
+
+**_Core Concepts_**
+
+- **The Cost of `new`:** Every time we write `new MyObject()`, the JVM allocates memory on the heap. Eventually, the
+  Garbage Collector has to sweep, mark, and compact the heap, causing Stop-The-World (STW) pauses.
+- **Escape Analysis:** HotSpot JIT compiler uses Escape Analysis to optionally promote short-lived object allocations
+  from the heap to stack frames (Scalar Replacement). **Crucial takeaway:** Never rely on escape analysis for hot paths;
+  always design for zero-allocation explicitly.
+- **Primitives vs. Boxed Types:** Using `int` vs. `Integer` or `long` vs. `Long`. Boxed objects carry a 16-byte object
+  header overhead and point to heap locations via pointers, destroying CPU cache locality.
+- **Fixed-Point Arithmetic:** ULL systems avoid `double` or `float` where possible for calculations; prices are
+  multiplied by a factor (e.g., `10^4`) and stored as raw `long` primitives to avoid floating-point conversion overhead
+  and precision loss.
+- **Flyweight Pattern:** Reusing a single mutable wrapper object over a backing byte buffer to read/write fields without
+  instantiating new objects.
+- **Object Pooling:** Pre-allocating a fixed-size ring or array of domain objects (e.g., pre-allocated `Order` or
+  `Quote` structs) to cycle through.
+
+
